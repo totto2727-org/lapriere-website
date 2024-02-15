@@ -1,0 +1,13 @@
+name: "setup-js"
+runs:
+  using: "composite"
+  steps:
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+    - name: Global Packages Install
+      shell: bash
+      run: bun i -g @antfu/ni
+    - name: Packages Install
+      shell: bash
+      run: ni i

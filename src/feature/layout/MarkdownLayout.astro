@@ -1,0 +1,33 @@
+---
+import HtmlLayout from "./HtmlLayout.astro"
+import { container, prose } from "@/feature/ui"
+import { BaseHeader } from "./header"
+import { BaseHead } from "./head"
+import { BaseFooter } from "./footer"
+import clsx from "clsx"
+
+type Props = {
+  frontmatter: {
+    title?: string
+  }
+}
+const { frontmatter } = Astro.props
+---
+
+<HtmlLayout>
+  <BaseHead title={frontmatter.title} slot="head" />
+  <BaseHeader />
+  <main class={container()}>
+    <article
+      class={prose({
+        class: clsx(
+          "prose-a:link prose-a:link-primary",
+          "[&_.rlc-container]:m-4",
+        ),
+      })}
+    >
+      <slot />
+    </article>
+  </main>
+  <BaseFooter />
+</HtmlLayout>

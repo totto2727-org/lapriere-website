@@ -1,0 +1,32 @@
+---
+import "@/feature/style/global/index.scss"
+
+import { loadColorThemeOnCookie } from "@/feature/theme"
+
+type Props = {
+  lang?: string
+}
+const { props } = Astro
+
+const DEFAAULT_LANG = "ja"
+
+const theme = loadColorThemeOnCookie(Astro.cookies)
+---
+
+<html
+  lang={props.lang ?? DEFAAULT_LANG}
+  data-theme={theme.mode}
+  data-color-theme-palette={theme.palette}
+>
+  <head>
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-dvh flex-col overflow-y-scroll underline-offset-4">
+    <slot />
+  </body>
+</html>
+
+<script>
+  import { addColorThemeChangeEventListener } from "../theme/event"
+  addColorThemeChangeEventListener()
+</script>

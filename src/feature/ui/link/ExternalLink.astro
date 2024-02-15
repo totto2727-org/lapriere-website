@@ -1,0 +1,8 @@
+---
+import { type HTMLAttributes } from "astro/types"
+
+type Props = Omit<HTMLAttributes<"a">, "target" | "rel">
+const { props } = Astro
+---
+
+<a {...props} target="_blank" rel="nofererrer"><slot /></a>
