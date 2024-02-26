@@ -126,7 +126,7 @@ export const ColorThemePopupButton = component$<{ theme: ColorTheme }>(
             class="size-6 sm:size-8"
           />
         </div>
-        <form class={dropDownContent()}>
+        <form tabIndex={0} class={dropDownContent()}>
           <fieldset>
             <ColorModeLegend>Mode</ColorModeLegend>
             <div class="join join-vertical w-full">
