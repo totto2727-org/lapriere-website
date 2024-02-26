@@ -58,7 +58,7 @@ export const Calender = component$<{
   )
 })
 
-export const prose = cva({ base: "prose prose-sm max-w-none sm:prose-base" })
+export const prose = cva({ base: "prose max-w-none sm:prose-base" })
 
 export const container = cva({
   base: "w-full max-w-7xl",
