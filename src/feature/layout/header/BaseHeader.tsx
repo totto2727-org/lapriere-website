@@ -30,7 +30,11 @@ export const BaseHeaderView = component$<{ theme: ColorTheme }>(({ theme }) => {
             <BaseHeaderDropDownTrigger>
               {nav.shotName ?? nav.name}
             </BaseHeaderDropDownTrigger>
-            <Ul role="list" tabIndex={0} class={dropDownContent()}>
+            <Ul
+              role="list"
+              tabIndex={dropDownContent.tabIndex}
+              class={dropDownContent.class()}
+            >
               {nav.contents.map((content) => (
                 <li>
                   <content.Link>

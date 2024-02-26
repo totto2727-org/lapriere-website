@@ -11,6 +11,8 @@ const { props } = Astro
 const DEFAAULT_LANG = "ja"
 
 const theme = loadColorThemeOnCookie(Astro.cookies)
+
+// bodyのonclickはiOSでドロップダウン等のフォーカスが外れない問題の対策です
 ---
 
 <html
@@ -21,7 +23,10 @@ const theme = loadColorThemeOnCookie(Astro.cookies)
   <head>
     <slot name="head" />
   </head>
-  <body class="flex min-h-dvh flex-col overflow-y-scroll underline-offset-4">
+  <body
+    class="flex min-h-dvh flex-col overflow-y-scroll underline-offset-4"
+    onclick="document.querySelector('body').focus()"
+  >
     <slot />
   </body>
 </html>
