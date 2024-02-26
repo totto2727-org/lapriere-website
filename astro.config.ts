@@ -6,17 +6,17 @@ import tailwind from "@astrojs/tailwind"
 import partytown from "@astrojs/partytown"
 import { defineConfig, passthroughImageService } from "astro/config"
 import Icons from "unplugin-icons/vite"
-import rlc from "remark-link-card"
 import rehypeExternalLinks from "rehype-external-links"
-//
+// @ts-expect-error no-type
+import rlc from "remark-link-card"
+
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
   adapter: cloudflare(),
   integrations: [sitemap(), qwikdev(), mdx(), tailwind(), partytown()],
   markdown: {
-    // eslint-disable-next-line no-undef
-    remarkPlugins: [[rlc, { cache: process.env.NODE_ENV !== "production" }]],
+    remarkPlugins: [[rlc, { cache: true }]],
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["nofererrer"], target: "_blank" }],
     ],
