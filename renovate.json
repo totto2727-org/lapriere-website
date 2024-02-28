@@ -21,7 +21,7 @@
     {
       "groupName": "astro",
       "matchPackagePatterns": ["astro", "remark", "rehype"],
-      "matchPackagePatterns": ["eslint", "stylelint", "prettier"],
+      "excludePackageNames": ["eslint", "stylelint", "prettier"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
