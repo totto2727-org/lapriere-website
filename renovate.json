@@ -1,0 +1,60 @@
+{
+  "extends": [
+    "config:recommended",
+    "schedule:weekends",
+    "schedule:automergeWeekends",
+    ":prConcurrentLimit20",
+    ":prHourlyLimitNone",
+    ":timezone(Asia/Tokyo)"
+  ],
+  "labels": ["renovate"],
+  "commitMessagePrefix": "build(deps): ",
+  "packageRules": [
+    {
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"]
+    },
+    {
+      "description": "Automerge minor updates",
+      "matchUpdateTypes": ["minor"]
+    },
+    {
+      "groupName": "astro",
+      "matchPackagePatterns": ["astro", "remark", "rehype"],
+      "matchPackagePatterns": ["eslint", "stylelint", "prettier"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "format",
+      "matchPackagePatterns": ["prettier"]
+      "excludePackageNames": ["eslint"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "runtime",
+      "matchPackagePatterns": ["bun"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "typescript",
+      "matchPackagePatterns": ["typescript"],
+      "excludePackageNames": ["eslint"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "linter",
+      "matchPackagePatterns": ["eslint", "stylelint"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "css",
+      "matchPackagePatterns": ["clsx", "cva", "css", "sass", "tailwind-merge", "daisyui"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "icon",
+      "matchPackagePatterns": ["icon", "svg"],
+      "matchUpdateTypes": ["major", "minor"]
+    }
+  ]
+}
