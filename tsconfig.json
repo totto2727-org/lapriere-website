@@ -11,8 +11,6 @@
     "exactOptionalPropertyTypes": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    // 依存の方で問題があるため一時的に無効化
-    "noImplicitReturns": false,
     "types": [
       "bun-types",
       "./node_modules/unplugin-icons/types/qwik",
