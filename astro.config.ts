@@ -7,8 +7,8 @@ import partytown from "@astrojs/partytown"
 import { defineConfig, passthroughImageService } from "astro/config"
 import Icons from "unplugin-icons/vite"
 import rehypeExternalLinks from "rehype-external-links"
-// @ts-expect-error no-type
-import rlc from "remark-link-card"
+import { rlc } from "@totto/lib/remark-link-card"
+import type { RemarkPlugins } from "astro"
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,7 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [sitemap(), qwikdev(), mdx(), tailwind(), partytown()],
   markdown: {
-    remarkPlugins: [[rlc, { cache: true }]],
+    remarkPlugins: [[rlc, {}]] as unknown as RemarkPlugins,
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["nofererrer"], target: "_blank" }],
     ],
