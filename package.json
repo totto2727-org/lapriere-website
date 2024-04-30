@@ -64,7 +64,7 @@
     "bun-types": "latest",
     "eslint": "9.1.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-astro": "^1.0.0",
     "eslint-plugin-tailwindcss": "^3.14.2",
     "postcss-html": "^1.6.0",
     "prettier": "^3.2.5",
