@@ -58,7 +58,7 @@
     "unplugin-icons": "^0.19.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.4",
+    "@astrojs/check": "^0.6.0",
     "@eslint/js": "^9.0.0",
     "@types/js-cookie": "^3.0.6",
     "bun-types": "latest",
@@ -78,6 +78,6 @@
     "wrangler": "^3.28.2"
   },
   "overrides": {
-    "astro-integration-kit": "0.3.1"
+    "astro-integration-kit": "0.13.2"
   }
 }
