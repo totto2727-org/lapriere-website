@@ -3,4 +3,7 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
-declare module "*.astro" {}
+declare module "*.astro"
+
+// 不要になり次第削除すること
+declare module "fs-move"

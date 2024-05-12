@@ -14,6 +14,7 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [sitemap(), qwikdev({}), mdx(), tailwind(), partytown()],
   markdown: {
+    // @ts-expect-error 型定義修正後このコメントを削除すること
     remarkPlugins: [rlc],
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["nofererrer"], target: "_blank" }],

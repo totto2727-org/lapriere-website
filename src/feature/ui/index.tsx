@@ -50,7 +50,7 @@ export const Calender = component$<{
         target="_blank"
         rel="noopener noreferrer"
         title="La prière公式イベントカレンダーを購読する"
-        class="not-prose btn btn-primary max-w-[20rem]"
+        class="not-prose btn btn-primary max-w-80"
       >
         購読する
       </a>
