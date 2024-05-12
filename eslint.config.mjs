@@ -7,7 +7,7 @@ const compat = new FlatCompat()
 
 export default [
   {
-    ignores: ["**/dist/**"],
+    ignores: ["**/dist/**", "**/.history/**"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
