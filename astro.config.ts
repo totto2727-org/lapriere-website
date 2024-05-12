@@ -10,7 +10,7 @@ import rehypeExternalLinks from "rehype-external-links"
 import { rlc } from "@totto/lib/remark-link-card"
 
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   adapter: cloudflare(),
   integrations: [sitemap(), qwikdev({}), mdx(), tailwind(), partytown()],
   markdown: {
