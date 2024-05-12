@@ -8,15 +8,13 @@ import { defineConfig, passthroughImageService } from "astro/config"
 import Icons from "unplugin-icons/vite"
 import rehypeExternalLinks from "rehype-external-links"
 import { rlc } from "@totto/lib/remark-link-card"
-import type { RemarkPlugins } from "astro"
 
-// https://astro.build/config
 export default defineConfig({
   output: "hybrid",
   adapter: cloudflare(),
   integrations: [sitemap(), qwikdev({}), mdx(), tailwind(), partytown()],
   markdown: {
-    remarkPlugins: [[rlc, {}]] as unknown as RemarkPlugins,
+    remarkPlugins: [rlc],
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["nofererrer"], target: "_blank" }],
     ],
