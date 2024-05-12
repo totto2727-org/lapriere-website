@@ -13,7 +13,7 @@
     "noUnusedParameters": true,
     "types": [
       "bun-types",
-      "./node_modules/unplugin-icons/types/qwik",
+      "unplugin-icons/types/qwik",
       "unplugin-icons/types/astro"
     ],
     "plugins": [

@@ -11,6 +11,10 @@
   "commitMessagePrefix": "build(deps): ",
   "packageRules": [
     {
+      "matchPackagePatterns": ["astro-integration-kit"],
+      "enabled": false
+    },
+    {
       "description": "Automerge patch updates",
       "matchUpdateTypes": ["patch"]
     },

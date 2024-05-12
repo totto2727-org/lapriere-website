@@ -14,7 +14,7 @@ import type { RemarkPlugins } from "astro"
 export default defineConfig({
   output: "hybrid",
   adapter: cloudflare(),
-  integrations: [sitemap(), qwikdev(), mdx(), tailwind(), partytown()],
+  integrations: [sitemap(), qwikdev({}), mdx(), tailwind(), partytown()],
   markdown: {
     remarkPlugins: [[rlc, {}]] as unknown as RemarkPlugins,
     rehypePlugins: [
