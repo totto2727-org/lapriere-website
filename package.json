@@ -22,8 +22,8 @@
     "fix:prettier": "prettier --write --cache . '**/*.{css,scss,astro}'"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^9.0.0",
-    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/cloudflare": "^10.0.0",
+    "@astrojs/mdx": "^3.0.0",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
