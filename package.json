@@ -41,7 +41,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@totto/lib": "npm:@jsr/totto__lib",
     "@types/fs-extra": "^11.0.4",
-    "astro": "^4.3.7",
+    "astro": "^4.8.0",
     "clsx": "^2.1.0",
     "cva": "beta",
     "daisyui": "^4.7.2",
