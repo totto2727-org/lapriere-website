@@ -78,6 +78,6 @@
     "wrangler": "^3.28.2"
   },
   "overrides": {
-    "astro-integration-kit": "0.13.2"
+    "astro-integration-kit": "0.3.1"
   }
 }
