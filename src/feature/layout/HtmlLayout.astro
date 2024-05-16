@@ -1,27 +1,22 @@
 ---
 import "@/feature/style/global/index.scss"
-
-import { loadColorThemeOnCookie } from "@/feature/theme"
+import { ThemeScript } from "@/feature/theme/component"
 
 type Props = {
   lang?: string
 }
+
 const { props } = Astro
 
 const DEFAAULT_LANG = "ja"
 
-const theme = loadColorThemeOnCookie(Astro.cookies)
-
 // bodyのonclickはiOSでドロップダウン等のフォーカスが外れない問題の対策です
 ---
 
-<html
-  lang={props.lang ?? DEFAAULT_LANG}
-  data-theme={theme.mode}
-  data-color-theme-palette={theme.palette}
->
+<html lang={props.lang ?? DEFAAULT_LANG}>
   <head>
     <slot name="head" />
+    <ThemeScript />
   </head>
   <body
     class="flex min-h-dvh flex-col overflow-y-scroll underline-offset-4"
@@ -30,8 +25,3 @@ const theme = loadColorThemeOnCookie(Astro.cookies)
     <slot />
   </body>
 </html>
-
-<script>
-  import { addColorThemeChangeEventListener } from "../theme/event"
-  addColorThemeChangeEventListener()
-</script>

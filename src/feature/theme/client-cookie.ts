@@ -2,11 +2,10 @@ import Cookies from "js-cookie"
 import {
   COLOR_THEME_COOKIE_OPTION,
   COLOR_THEME_MODE_COOKIE_NAME,
-  COLOR_THEME_MODE_DEFAULT,
   COLOR_THEME_PALETTE_COOKIE_NAME,
-  COLOR_THEME_PALETTE_DEFAULT,
 } from "./const"
-import type { ColorTheme } from "./type"
+import { colorThemeValidator, type ColorTheme } from "./type"
+import { parse } from "valibot"
 
 /**
  * ブラウザ上でCookieにカラーテーマを保存する関数
@@ -14,19 +13,31 @@ import type { ColorTheme } from "./type"
  * @param theme
  */
 export function saveColorThemeOnCookie(theme: Partial<ColorTheme>) {
-  if (theme.mode) {
-    Cookies.set(
-      COLOR_THEME_MODE_COOKIE_NAME,
-      theme.mode ?? COLOR_THEME_MODE_DEFAULT,
-      COLOR_THEME_COOKIE_OPTION,
-    )
-  }
+  const validatedTheme = parse(colorThemeValidator, theme)
 
-  if (theme.palette) {
-    Cookies.set(
-      COLOR_THEME_PALETTE_COOKIE_NAME,
-      theme.palette ?? COLOR_THEME_PALETTE_DEFAULT,
-      COLOR_THEME_COOKIE_OPTION,
-    )
-  }
+  Cookies.set(
+    COLOR_THEME_MODE_COOKIE_NAME,
+    validatedTheme.mode,
+    COLOR_THEME_COOKIE_OPTION,
+  )
+
+  Cookies.set(
+    COLOR_THEME_PALETTE_COOKIE_NAME,
+    validatedTheme.palette,
+    COLOR_THEME_COOKIE_OPTION,
+  )
+}
+
+/**
+ * ブラウザ上でCookieにカラーテーマを保存する関数
+ *
+ * @param theme
+ */
+export function loadColorThemeOnClientCookie(
+  cookie: Partial<Record<string, string>>,
+): ColorTheme {
+  const mode = cookie[COLOR_THEME_MODE_COOKIE_NAME]
+  const palette = cookie[COLOR_THEME_MODE_COOKIE_NAME]
+
+  return parse(colorThemeValidator, { mode, palette })
 }

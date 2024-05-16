@@ -1,16 +1,27 @@
-import { Slot, component$, useOn, $ } from "@builder.io/qwik"
-import { dispatchColorThemeChange } from "../event"
+import {
+  Slot,
+  component$,
+  useOn,
+  $,
+  useVisibleTask$,
+  useSignal,
+} from "@builder.io/qwik"
+import {
+  dispatchColorThemeChange,
+  getColorThemeChangeEventDefaultTarget,
+} from "../event"
 import PaletteIcon from "~icons/material-symbols/palette-outline"
 import {
-  isColorThemeMode,
+  colorThemeModeValidator,
+  colorThemePaletteValidator,
+  type ColorTheme,
   type ColorThemeMode,
   type ColorThemePalette,
-  COLOR_THEME_MODE_DEFAULT,
-  isColorThemePallete,
-  COLOR_THEME_PALETTE_DEFAULT,
-} from "../const"
-import type { ColorTheme } from "../type"
+} from "../type"
 import { dropDown, dropDownContent } from "@/feature/ui"
+import { getDefault, is } from "valibot"
+import { loadColorThemeOnClientCookie } from "../client-cookie"
+import Cookies from "js-cookie"
 
 const ratioClass = "btn join-item after:whitespace-nowrap"
 const COLOR_THEME_MODE_RATIO_NANE = "color-theme-mode-ratio"
@@ -37,14 +48,22 @@ export const ColorThemeModeRatio = component$<RatioProps<ColorThemeMode>>(
 
         const { value } = target
 
-        if (isColorThemeMode(value)) {
-          dispatchColorThemeChange({
-            mode: value,
-          })
+        const updateTarget = getColorThemeChangeEventDefaultTarget()
+
+        if (is(colorThemeModeValidator, value)) {
+          dispatchColorThemeChange(
+            {
+              mode: value,
+            },
+            updateTarget,
+          )
         } else {
-          dispatchColorThemeChange({
-            mode: COLOR_THEME_MODE_DEFAULT,
-          })
+          dispatchColorThemeChange(
+            {
+              mode: getDefault(colorThemeModeValidator),
+            },
+            updateTarget,
+          )
         }
       }),
     )
@@ -78,10 +97,17 @@ export const ColorModePaletteRatio = component$<RatioProps<ColorThemePalette>>(
 
         const { value } = target
 
-        if (isColorThemePallete(value)) {
-          dispatchColorThemeChange({ palette: value })
+        const updateTarget = getColorThemeChangeEventDefaultTarget()
+
+        if (is(colorThemePaletteValidator, value)) {
+          dispatchColorThemeChange({ palette: value }, updateTarget)
         } else {
-          dispatchColorThemeChange({ palette: COLOR_THEME_PALETTE_DEFAULT })
+          dispatchColorThemeChange(
+            {
+              palette: getDefault(colorThemePaletteValidator),
+            },
+            updateTarget,
+          )
         }
       }),
     )
@@ -108,24 +134,35 @@ export const ColorModeLegend = component$(() => {
   )
 })
 
-export const ColorThemePopupButton = component$<{ theme: ColorTheme }>(
-  ({ theme }) => {
-    return (
+export const ColorThemePopupButton = component$(() => {
+  const themeStore = useSignal<
+    { type: "loaded"; theme: ColorTheme } | { type: "unloaded" }
+  >({ type: "unloaded" })
+
+  useVisibleTask$(() => {
+    themeStore.value = {
+      type: "loaded",
+      theme: loadColorThemeOnClientCookie(Cookies.get()),
+    }
+  })
+
+  return (
+    <div
+      class={dropDown.class({ class: "dropdown-end" })}
+      style={dropDown.style}
+    >
       <div
-        class={dropDown.class({ class: "dropdown-end" })}
-        style={dropDown.style}
+        tabIndex={0}
+        role="button"
+        class="btn btn-primary animate-none"
+        aria-label="カラーテーマの設定のトリガーボタン"
       >
-        <div
-          tabIndex={0}
-          role="button"
-          class="btn btn-primary animate-none"
-          aria-label="カラーテーマの設定のトリガーボタン"
-        >
-          <PaletteIcon
-            name="material-symbols:palette-outline"
-            class="size-6 sm:size-8"
-          />
-        </div>
+        <PaletteIcon
+          name="material-symbols:palette-outline"
+          class="size-6 sm:size-8"
+        />
+      </div>
+      {themeStore.value.type === "loaded" ? (
         <form
           tabIndex={dropDownContent.tabIndex}
           class={dropDownContent.class()}
@@ -136,12 +173,12 @@ export const ColorThemePopupButton = component$<{ theme: ColorTheme }>(
               <ColorThemeModeRatio
                 label="Light"
                 value="light"
-                checkedValue={theme.mode}
+                checkedValue={themeStore.value.theme.mode}
               />
               <ColorThemeModeRatio
                 label="Dark"
                 value="dark"
-                checkedValue={theme.mode}
+                checkedValue={themeStore.value.theme.mode}
               />
             </div>
           </fieldset>
@@ -152,27 +189,29 @@ export const ColorThemePopupButton = component$<{ theme: ColorTheme }>(
               <ColorModePaletteRatio
                 label="La prière"
                 value="lapriere"
-                checkedValue={theme.palette}
+                checkedValue={themeStore.value.theme.palette}
               />
               <ColorModePaletteRatio
                 label="棗いつき"
                 value="tamu"
-                checkedValue={theme.palette}
+                checkedValue={themeStore.value.theme.palette}
               />
               <ColorModePaletteRatio
                 label="藍月なくる"
                 value="nakutya"
-                checkedValue={theme.palette}
+                checkedValue={themeStore.value.theme.palette}
               />
               <ColorModePaletteRatio
                 label="nayuta"
                 value="nayuta"
-                checkedValue={theme.palette}
+                checkedValue={themeStore.value.theme.palette}
               />
             </div>
           </fieldset>
         </form>
-      </div>
-    )
-  },
-)
+      ) : (
+        <></>
+      )}
+    </div>
+  )
+})

@@ -1,10 +1,9 @@
-import type { ColorTheme } from "@/feature/theme"
-import { ColorThemePopupButton } from "@/feature/theme/component"
 import { Ul, container, dropDown, dropDownContent } from "@/feature/ui"
 import { Slot, component$ } from "@builder.io/qwik"
 import { globalNavigationContents } from "@/feature/content"
+import { ColorThemePopupButton } from "@/feature/theme/component"
 
-export const BaseHeaderView = component$<{ theme: ColorTheme }>(({ theme }) => {
+export const BaseHeader = component$(() => {
   return (
     <header class="bg-base-200">
       <nav
@@ -47,7 +46,7 @@ export const BaseHeaderView = component$<{ theme: ColorTheme }>(({ theme }) => {
         ))}
 
         <div class="ml-auto flex flex-row gap-4">
-          <ColorThemePopupButton theme={theme} />
+          <ColorThemePopupButton />
         </div>
       </nav>
     </header>

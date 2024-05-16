@@ -11,7 +11,7 @@ const COLOR_THEME_CHANGE_EVENT = "color-theme"
  *
  * 現在はデフォルトでHTMLタグを返します。
  */
-function getColorThemeChangeEventDefaultTarget() {
+export function getColorThemeChangeEventDefaultTarget() {
   return document.documentElement
 }
 
@@ -49,13 +49,12 @@ function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement) {
  * ターゲットの指定がない場合はデフォルトのターゲットに発火します。
  *
  * @param theme 変更先のテーマの値
- * @param target テーマに関する属性を持った要素
+ * @param targetElement テーマに関する属性を持った要素
  */
 export function dispatchColorThemeChange(
   theme: Partial<ColorTheme>,
-  target?: HTMLElement,
+  targetElement: HTMLElement,
 ) {
-  const targetElement = target ?? getColorThemeChangeEventDefaultTarget()
   const event: ColorThemeChangeEvent = new CustomEvent(
     COLOR_THEME_CHANGE_EVENT,
     { detail: theme },
@@ -82,11 +81,9 @@ export function dispatchColorThemeChange(
  * </html>
  * ```
  *
- * @param target テーマに関する属性を持った要素
+ * @param targetElement テーマに関する属性を持った要素
  */
-export function addColorThemeChangeEventListener(target?: HTMLElement) {
-  const targetElement = target ?? getColorThemeChangeEventDefaultTarget()
-
+export function addColorThemeChangeEventListener(targetElement: HTMLElement) {
   targetElement.addEventListener(COLOR_THEME_CHANGE_EVENT, (e) => {
     // TODO as
     onColorThemeChange(e as ColorThemeChangeEvent, targetElement)

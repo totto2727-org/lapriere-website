@@ -1,8 +1,0 @@
----
-import { loadColorThemeOnCookie } from "@/feature/theme"
-import { BaseHeaderView } from "./BaseHeader"
-
-const theme = loadColorThemeOnCookie(Astro.cookies)
----
-
-<BaseHeaderView theme={theme}><slot /></BaseHeaderView>
