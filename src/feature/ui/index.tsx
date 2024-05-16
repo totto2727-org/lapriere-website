@@ -4,7 +4,7 @@ import { cva } from "@/feature/style"
 export { Ul, Ol } from "./list"
 export { dropDown, dropDownContent } from "./dropdown"
 export { ExternalLink } from "./link"
-export { default as LatestMusicVideo } from "./LatestMusicVideo.astro"
+export { LatestMusicVideo } from "./latestMusicVideo"
 
 export const Button = component$<
   Omit<HTMLAttributes<HTMLButtonElement>, "type"> & {
