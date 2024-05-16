@@ -4,6 +4,7 @@ import { HTMLRewriter } from "htmlrewriter"
 
 const imageCacheMiddleware = defineMiddleware(async (_, next) => {
   const res = await next()
+
   if (
     res instanceof Response &&
     res.headers.get("content-type")?.startsWith("image")
