@@ -30,7 +30,7 @@
     "@astrojs/ts-plugin": "1.8.0",
     "@builder.io/qwik": "1.5.4",
     "@iconify-json/devicon": "1.1.41",
-    "@iconify-json/material-symbols": "1.1.79",
+    "@iconify-json/material-symbols": "1.1.81",
     "@iconify-json/material-symbols-light": "1.1.19",
     "@iconify/tailwind": "1.0.1",
     "@qwikdev/astro": "0.5.15",
