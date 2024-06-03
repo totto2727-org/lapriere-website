@@ -28,7 +28,7 @@
     "@astrojs/sitemap": "3.1.5",
     "@astrojs/tailwind": "5.1.0",
     "@astrojs/ts-plugin": "1.8.0",
-    "@builder.io/qwik": "1.5.4",
+    "@builder.io/qwik": "1.5.5",
     "@iconify-json/devicon": "1.1.41",
     "@iconify-json/material-symbols": "1.1.81",
     "@iconify-json/material-symbols-light": "1.1.19",
