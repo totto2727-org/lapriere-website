@@ -29,7 +29,7 @@
     "@astrojs/tailwind": "5.1.0",
     "@astrojs/ts-plugin": "1.8.0",
     "@builder.io/qwik": "1.5.5",
-    "@iconify-json/devicon": "1.1.41",
+    "@iconify-json/devicon": "1.1.43",
     "@iconify-json/material-symbols": "1.1.81",
     "@iconify-json/material-symbols-light": "1.1.19",
     "@iconify/tailwind": "1.0.1",
