@@ -32,7 +32,7 @@
     "@iconify-json/devicon": "1.1.43",
     "@iconify-json/material-symbols": "1.1.81",
     "@iconify-json/material-symbols-light": "1.1.21",
-    "@iconify/tailwind": "1.0.1",
+    "@iconify/tailwind": "1.1.1",
     "@qwikdev/astro": "0.5.15",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
