@@ -1,43 +1,43 @@
 ---
 type Props = {
-  title?: string
+	title?: string
 }
 
 const { props } = Astro
 
-const DEFAULT_TITLE = "La prière 非公式ファンサイト"
-const DEFAULT_CONTENT =
-  "アイドルユニットLa prièreの非公式ファンサイトです！イベントカレンダーや各種リンク集のような便利なページから、楽曲やこれまでの軌跡といった情報をまとめています！"
+const DEFAULT_TITLE = 'La prière 非公式ファンサイト'
+const DEFAULT_CONTENT
+	= 'アイドルユニットLa prièreの非公式ファンサイトです！イベントカレンダーや各種リンク集のような便利なページから、楽曲やこれまでの軌跡といった情報をまとめています！'
 ---
 
 <>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="manifest" href="/site.webmanifest" />
 
-  <meta name="generator" content={Astro.generator} />
+	<meta name="generator" content={Astro.generator} />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://lapriere.totto2727.dev" />
-  <meta
-    property="og:image"
-    content="https://lapriere.totto2727.dev/ogp/global.png"
-  />
-  <meta property="og:site_name" content="La prière 非公式ファンサイト" />
-  <meta property="og:locale" content="ja_JP" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://lapriere.totto2727.dev" />
+	<meta
+		property="og:image"
+		content="https://lapriere.totto2727.dev/ogp/global.png"
+	/>
+	<meta property="og:site_name" content="La prière 非公式ファンサイト" />
+	<meta property="og:locale" content="ja_JP" />
 
-  <meta content={DEFAULT_CONTENT} name="description" />
-  <meta property="og:description" content={DEFAULT_CONTENT} />
+	<meta content={DEFAULT_CONTENT} name="description" />
+	<meta property="og:description" content={DEFAULT_CONTENT} />
 
-  <meta
-    property="og:title"
-    content={props.title ? `${props.title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE}
-  />
-  <title>
-    {props.title ? `${props.title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE}
-  </title>
+	<meta
+		property="og:title"
+		content={props.title ? `${props.title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE}
+	/>
+	<title>
+		{props.title ? `${props.title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE}
+	</title>
 </>

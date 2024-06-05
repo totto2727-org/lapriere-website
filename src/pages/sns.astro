@@ -1,0 +1,64 @@
+---
+import { BaseFooter, BaseHead, BaseHeader, HtmlLayout } from '@/feature/layout'
+import { container, prose } from '@/feature/ui'
+---
+
+<HtmlLayout>
+	<BaseHead title="sns" slot="head" />
+	<BaseHeader />
+	<main class={container()}>
+		<article class={prose({ class: 'flex flex-col items-center' })}>
+			<h2>La prièreのSNS</h2>
+			<ul
+				class="not-prose [&_>_li_>_a]:not-prose flex flex-row flex-wrap justify-center gap-4 [&_>_li_>_a]:btn [&_>_li_>_a]:btn-primary"
+			>
+				<li>
+					<a
+						href="https://twitter.com/i/lists/1516932575876378625?s=20"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="La prière関係者をまとめたXのリストに遷移する"
+					>Xリスト</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://misskey.io/timeline/list/9q31fnzgpq7c0cyl"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="La prière関係者をまとめたMisskeyのリストに遷移する"
+					>Misskeyリスト</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://bsky.app/profile/did:plc:5ppqhbjjdhqcxsu5z5vebkfs/lists/3kjirqu3pnz24"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="La prière関係者をまとめたBlueskyのリストに遷移する"
+					>Blueskyリスト</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://www.instagram.com/itsukinatsume/"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="棗いつきのInstagram"
+					>Instagram（棗いつき）</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://www.tiktok.com/@itsukinatsume"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="棗いつきのTikTokに遷移する"
+					>TikTok（棗いつき）</a
+					>
+				</li>
+			</ul>
+		</article>
+	</main>
+	<BaseFooter />
+</HtmlLayout>

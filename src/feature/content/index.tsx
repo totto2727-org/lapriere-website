@@ -1,1 +1,1 @@
-export { globalNavigationContents } from "./data"
+export { globalNavigationContents } from './data'

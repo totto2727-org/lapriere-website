@@ -3,131 +3,131 @@
 
 /* テーマの変数一覧 https://daisyui.com/docs/colors/ */
 
-[data-theme="light"] {
-  /* https://lapriere.jp/
+[data-theme='light'] {
+	/* https://lapriere.jp/
   /* https://lapriere.jp/wp-content/themes/Lapriere/images/shape01.png */
-  --nakutya-blue: #8bbedd;
-  --tamu-yellow: #efcc71;
-  --nayuta-pink: #e7a6bf;
+	--nakutya-blue: #8bbedd;
+	--tamu-yellow: #efcc71;
+	--nayuta-pink: #e7a6bf;
 
-  &[data-color-theme-palette="lapriere"],
-  [data-color-theme-palette="lapriere"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='lapriere'],
+	[data-color-theme-palette='lapriere'] {
+		--color-primary: #500000;
+	}
 
-  &[data-color-theme-palette="tamu"],
-  [data-color-theme-palette="tamu"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='tamu'],
+	[data-color-theme-palette='tamu'] {
+		--color-primary: #500000;
+	}
 
-  &[data-color-theme-palette="nakutya"],
-  [data-color-theme-palette="nakutya"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='nakutya'],
+	[data-color-theme-palette='nakutya'] {
+		--color-primary: #500000;
+	}
 
-  &[data-color-theme-palette="nayuta"],
-  [data-color-theme-palette="nayuta"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='nayuta'],
+	[data-color-theme-palette='nayuta'] {
+		--color-primary: #500000;
+	}
 }
 
-[data-theme="dark"] {
-  /* https://lapriere.jp/
+[data-theme='dark'] {
+	/* https://lapriere.jp/
   /* https://lapriere.jp/wp-content/themes/Lapriere/images/shape01.png */
-  --nakutya-blue: #8bbedd;
-  --tamu-yellow: #efcc71;
-  --nayuta-pink: #e7a6bf;
+	--nakutya-blue: #8bbedd;
+	--tamu-yellow: #efcc71;
+	--nayuta-pink: #e7a6bf;
 
-  &[data-color-theme-palette="lapriere"],
-  [data-color-theme-palette="lapriere"] {
-    --color-primary: #500000;
-    /* --p: 40.1% 0.123 21.57; */
-    /* --pc: 40.1% 0.123 21.57; */
-    /* --s: 40.1% 0.123 21.57; */
-    /* --sc: 40.1% 0.123 21.57; */
-    /* --t: 40.1% 0.123 21.57; */
-    /* --tc: 40.1% 0.123 21.57; */
-    /* --a: 40.1% 0.123 21.57; */
-    /* --ac: 40.1% 0.123 21.57; */
-    /* --n: 40.1% 0.123 21.57; */
-    /* --nc: 40.1% 0.123 21.57; */
-    /* --b1: 40.1% 0.123 21.57; */
-    /* --b2: 40.1% 0.123 21.57; */
-    /* --b3: 40.1% 0.123 21.57; */
-    /* --bc: 40.1% 0.123 21.57; */
-    /* --in: 40.1% 0.123 21.57; */
-    /* --inc: 40.1% 0.123 21.57; */
-    /* --su: 40.1% 0.123 21.57; */
-    /* --suc: 40.1% 0.123 21.57; */
-    /* --wa: 40.1% 0.123 21.57; */
-    /* --wac: 40.1% 0.123 21.57; */
-    /* --er: 40.1% 0.123 21.57; */
-    /* --erc: 40.1% 0.123 21.57; */
-  }
+	&[data-color-theme-palette='lapriere'],
+	[data-color-theme-palette='lapriere'] {
+		--color-primary: #500000;
+		/* --p: 40.1% 0.123 21.57; */
+		/* --pc: 40.1% 0.123 21.57; */
+		/* --s: 40.1% 0.123 21.57; */
+		/* --sc: 40.1% 0.123 21.57; */
+		/* --t: 40.1% 0.123 21.57; */
+		/* --tc: 40.1% 0.123 21.57; */
+		/* --a: 40.1% 0.123 21.57; */
+		/* --ac: 40.1% 0.123 21.57; */
+		/* --n: 40.1% 0.123 21.57; */
+		/* --nc: 40.1% 0.123 21.57; */
+		/* --b1: 40.1% 0.123 21.57; */
+		/* --b2: 40.1% 0.123 21.57; */
+		/* --b3: 40.1% 0.123 21.57; */
+		/* --bc: 40.1% 0.123 21.57; */
+		/* --in: 40.1% 0.123 21.57; */
+		/* --inc: 40.1% 0.123 21.57; */
+		/* --su: 40.1% 0.123 21.57; */
+		/* --suc: 40.1% 0.123 21.57; */
+		/* --wa: 40.1% 0.123 21.57; */
+		/* --wac: 40.1% 0.123 21.57; */
+		/* --er: 40.1% 0.123 21.57; */
+		/* --erc: 40.1% 0.123 21.57; */
+	}
 
-  &[data-color-theme-palette="tamu"],
-  [data-color-theme-palette="tamu"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='tamu'],
+	[data-color-theme-palette='tamu'] {
+		--color-primary: #500000;
+	}
 
-  &[data-color-theme-palette="nakutya"],
-  [data-color-theme-palette="nakutya"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='nakutya'],
+	[data-color-theme-palette='nakutya'] {
+		--color-primary: #500000;
+	}
 
-  &[data-color-theme-palette="nayuta"],
-  [data-color-theme-palette="nayuta"] {
-    --color-primary: #500000;
-  }
+	&[data-color-theme-palette='nayuta'],
+	[data-color-theme-palette='nayuta'] {
+		--color-primary: #500000;
+	}
 }
 
 .rlc-container {
-  @apply card card-bordered card-side bg-base-100 shadow-md h-32 text-base;
+	@apply card card-bordered card-side bg-base-100 shadow-md h-32 text-base;
 
-  &:hover {
-    filter: brightness(0.8);
-  }
+	&:hover {
+		filter: brightness(0.8);
+	}
 
-  animation: button-pop var(--animation-btn, 0.25s) ease-out;
+	animation: button-pop var(--animation-btn, 0.25s) ease-out;
 
-  &active:hover,
-  &:active:focus {
-    animation: button-pop 0s ease-out;
-    transform: scale(0.97);
-  }
+	&active:hover,
+	&:active:focus {
+		animation: button-pop 0s ease-out;
+		transform: scale(0.97);
+	}
 
-  transition: filter 200ms ease;
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	transition: filter 200ms ease;
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .rlc-info {
-  @apply card-body gap-1 w-full text-ellipsis whitespace-nowrap overflow-hidden p-4;
+	@apply card-body gap-1 w-full text-ellipsis whitespace-nowrap overflow-hidden p-4;
 }
 
 .rlc-title {
-  @apply card-title text-[1em];
+	@apply card-title text-[1em];
 }
 
 .rlc-description {
-  @apply text-[0.75em];
+	@apply text-[0.75em];
 }
 
 .rlc-url-container {
-  @apply flex flex-row gap-4 mt-auto;
+	@apply flex flex-row gap-4 mt-auto;
 }
 
 .rlc-favicon {
-  @apply h-full w-fit;
+	@apply h-full w-fit;
 }
 
 .rlc-url {
-  @apply text-[0.75em];
+	@apply text-[0.75em];
 }
 
 .rlc-image-container {
-  @apply ml-auto aspect-auto w-fit flex-shrink-0 max-sm:hidden;
+	@apply ml-auto aspect-auto w-fit flex-shrink-0 max-sm:hidden;
 }
 
 .rlc-image {
-  @apply h-full;
+	@apply h-full;
 }

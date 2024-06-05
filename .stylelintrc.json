@@ -1,9 +1,9 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-standard-scss",
-    "stylelint-config-html/html",
-    "stylelint-config-html/astro"
-  ],
-  "ignoreFiles": ["dist/**/*"]
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-standard-scss",
+		"stylelint-config-html/html",
+		"stylelint-config-html/astro"
+	],
+	"ignoreFiles": ["dist/**/*"]
 }

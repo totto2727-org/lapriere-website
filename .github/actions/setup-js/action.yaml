@@ -1,6 +1,6 @@
-name: "setup-js"
+name: setup-js
 runs:
-  using: "composite"
+  using: composite
   steps:
     - uses: oven-sh/setup-bun@v1
       with:

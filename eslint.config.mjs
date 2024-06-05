@@ -1,23 +1,51 @@
-import eslintConfigPrettier from "eslint-config-prettier"
-import eslint from "@eslint/js"
-import tseslint from "typescript-eslint"
-import { FlatCompat } from "@eslint/eslintrc"
+import antfu from '@antfu/eslint-config'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import tailwind from 'eslint-plugin-tailwindcss'
 
-const compat = new FlatCompat()
-
-export default [
-  {
-    ignores: ["**/dist/**", "**/.history/**"],
-  },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
-  ...compat.extends("plugin:tailwindcss/recommended"),
-  {
-    rules: {
-      "tailwindcss/no-custom-classname": "off",
-      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-    },
-  },
-  eslintConfigPrettier,
-]
+export default antfu(
+	{
+		formatters: true,
+		astro: true,
+		stylistic: {
+			indent: 'tab',
+		},
+		formatters: {
+			options: {
+				prettierOptions: {
+					arrowParens: 'avoid',
+				},
+			},
+		},
+		typescript: {
+			overrides: {
+				'ts/consistent-type-imports': ['error', {
+					prefer: 'type-imports',
+					disallowTypeAnnotations: true,
+					fixStyle: 'separate-type-imports',
+				}],
+			},
+		},
+	},
+	{
+		ignores: ['**/dist/**', '**/.history/**'],
+	},
+	...tailwind.configs['flat/recommended'],
+	{
+		rules: {
+			'tailwindcss/no-custom-classname': 'off',
+		},
+	},
+	{
+		plugins: {
+			'simple-import-sort': simpleImportSort,
+		},
+		rules: {
+			'simple-import-sort/imports': 'error',
+			'simple-import-sort/exports': 'error',
+			'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+			// 重複の無効化
+			'import/order': 'off',
+			'sort-imports': 'off',
+		},
+	},
+)
