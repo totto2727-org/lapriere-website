@@ -25,3 +25,19 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=lapriere-website
+
+      - name: Install Playwright
+        run: na playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: na playwright test
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy playwright-report --project-name=lapriere-website-playwright
+
