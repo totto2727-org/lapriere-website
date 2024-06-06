@@ -2,7 +2,10 @@ import { component$, Slot } from '@builder.io/qwik'
 
 import { globalNavigationContents } from '@/feature/content'
 import { ColorThemePopupButton } from '@/feature/theme/component'
-import { container, dropDown, dropDownContent, Ul } from '@/feature/ui'
+import { dropDown, dropDownContent } from '@/feature/ui/drop-down'
+import { Ul } from '@/feature/ui/list'
+
+import { container } from '../ui/container'
 
 export const BaseHeaderDropDownTrigger = component$(() => {
 	return (

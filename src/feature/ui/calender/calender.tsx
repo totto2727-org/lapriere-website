@@ -1,8 +1,8 @@
 import { component$ } from '@builder.io/qwik'
 
-import { CalenderInternal } from '#js/feature/ui/calender.internal'
+import { CalenderInternal } from '@/feature/ui/calender/calender.internal'
 
-import { prose } from '.'
+import { prose } from '../prose'
 
 export const Calender = component$<{
 	title: string
