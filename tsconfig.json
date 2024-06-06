@@ -1,25 +1,25 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "astro/tsconfigs/strictest",
-	"compilerOptions": {
-		"jsx": "react-jsx",
-		"jsxImportSource": "@builder.io/qwik",
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"]
-		},
-		"types": [
-			"bun-types",
-			"unplugin-icons/types/qwik",
-			"unplugin-icons/types/astro"
-		],
-		"exactOptionalPropertyTypes": false,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"plugins": [
-			{
-				"name": "@astrojs/ts-plugin"
-			}
-		]
-	}
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": [
+      "bun-types",
+      "unplugin-icons/types/qwik",
+      "unplugin-icons/types/astro"
+    ],
+    "exactOptionalPropertyTypes": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ]
+  }
 }

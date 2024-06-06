@@ -3,10 +3,10 @@ const cookies = document.cookie.split('; ')
 
 document.documentElement.dataset.theme = cookies
 // @ts-expect-error インラインスクリプトのため無効化
-	?.find(row => row.startsWith(mode))
-	?.split('=')[1]
+  ?.find(row => row.startsWith(mode))
+  ?.split('=')[1]
 
 document.documentElement.dataset.palette = cookies
 // @ts-expect-error/ @ts-expect-error インラインスクリプトのため無効化
-	?.find(row => row.startsWith(palette))
-	?.split('=')[1]
+  ?.find(row => row.startsWith(palette))
+  ?.split('=')[1]
