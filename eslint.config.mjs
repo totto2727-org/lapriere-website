@@ -25,6 +25,11 @@ export default antfu(
 				}],
 			},
 		},
+		yaml: {
+			overrides: {
+				'format/prettier': ['error', { useTabs: false }],
+			},
+		},
 	},
 	{
 		ignores: ['**/dist/**', '**/.history/**'],
