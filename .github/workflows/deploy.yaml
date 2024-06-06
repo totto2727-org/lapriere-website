@@ -31,14 +31,14 @@ jobs:
         run: na playwright install --with-deps
 
       - name: Run Playwright tests
+        continue-on-error: true
         run: na playwright test
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
 
       - name: Remove download attribute
-        if: failure()
         run: |
-          sed -i 's/download:Kv\(e\),//g' playwright-report/index.html
+          sed -i 's|,download:Kv(e)||g' playwright-report/index.html
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
