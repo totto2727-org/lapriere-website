@@ -7,6 +7,7 @@
 		"davidanson.vscode-markdownlint",
 		"takumii.markdowntable",
 		"astro-build.astro-vscode",
-		"bradlc.vscode-tailwindcss"
+		"bradlc.vscode-tailwindcss",
+		"ms-playwright.playwright"
 	]
 }
