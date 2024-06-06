@@ -1,8 +1,8 @@
 import { component$ } from '@builder.io/qwik'
 
-import { CalenderInternal } from '@/feature/ui/calender/calender.internal'
+import { CalenderBody } from '#js/feature/ui/calender-body/calender-body'
 
-import { prose } from '../prose'
+import { prose } from './prose'
 
 export const Calender = component$<{
 	title: string
@@ -16,7 +16,7 @@ export const Calender = component$<{
 			})}
 		>
 			<h2>{props.title}</h2>
-			<CalenderInternal {...props} />
+			<CalenderBody {...props} />
 			<a
 				href={props.icsUrl}
 				target="_blank"

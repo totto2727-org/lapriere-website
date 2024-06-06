@@ -1,9 +1,9 @@
 import { component$ } from '@builder.io/qwik'
 
-import type { Calender as Original } from './calender'
-import { iframeClass } from './calender.internal'
+import { iframeClass } from './_style'
+import type { CalenderBody as Original } from './calender-body'
 
-export const CalenderInternal: typeof Original = component$(() => {
+export const CalenderBody: typeof Original = component$(() => {
 	return (
 		<div class={`${iframeClass} skeleton`} />
 		/* iframeのデフォルトの属性、非推奨のため無効化 */

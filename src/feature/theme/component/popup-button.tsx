@@ -9,19 +9,17 @@ import {
 import Cookies from 'js-cookie'
 import { getDefault, is } from 'valibot'
 
-import { dropDown, dropDownContent } from '#js/feature/ui/drop-down'
+import { dropDown, dropDownContent } from '@/feature/ui/drop-down'
 import PaletteIcon from '~icons/material-symbols/palette-outline'
 
-import { loadColorThemeOnClientCookie } from '../client-cookie'
-import {
-	dispatchColorThemeChange,
-	getColorThemeChangeEventDefaultTarget,
-} from '../event'
-import type { ColorTheme, ColorThemeMode, ColorThemePalette } from '../type'
+import type { ColorTheme, ColorThemeMode, ColorThemePalette } from '../lib'
 import {
 	colorThemeModeValidator,
 	colorThemePaletteValidator,
-} from '../type'
+	dispatchColorThemeChange,
+	getColorThemeChangeEventDefaultTarget,
+	loadColorThemeOnClientCookie,
+} from '../lib'
 
 const ratioClass = 'btn join-item after:whitespace-nowrap'
 const COLOR_THEME_MODE_RATIO_NANE = 'color-theme-mode-ratio'

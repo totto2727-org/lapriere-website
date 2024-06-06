@@ -1,8 +1,8 @@
 import { component$ } from '@builder.io/qwik'
 
-export const iframeClass = 'max-w-full w-screen aspect-square sm:aspect-video sm:px-4'
+import { iframeClass } from './_style'
 
-export const CalenderInternal = component$<{
+export const CalenderBody = component$<{
 	title: string
 	iframeUrl: string
 	icsUrl: string

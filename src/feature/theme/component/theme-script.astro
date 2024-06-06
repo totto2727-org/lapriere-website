@@ -1,10 +1,8 @@
 ---
-
-
 import {
 	COLOR_THEME_MODE_COOKIE_NAME,
 	COLOR_THEME_PALETTE_COOKIE_NAME,
-} from '../const'
+} from '../lib'
 ---
 
 <script
@@ -31,11 +29,7 @@ import {
 <script>
 import Cookies from 'js-cookie'
 
-import { loadColorThemeOnClientCookie } from '../client-cookie'
-import {
-	addColorThemeChangeEventListener,
-	getColorThemeChangeEventDefaultTarget,
-} from '../event'
+import { addColorThemeChangeEventListener,	getColorThemeChangeEventDefaultTarget, loadColorThemeOnClientCookie } from '../lib'
 
 // テーマの設定
 // 不適切な値であれば初期値にリセット

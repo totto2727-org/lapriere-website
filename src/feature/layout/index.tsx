@@ -1,5 +1,0 @@
-export { BaseFooter } from './footer'
-export { BaseHead } from './head'
-export { BaseHeader } from './header'
-export { default as HtmlLayout } from './HtmlLayout.astro'
-export { default as MarkdownLayout } from './MarkdownLayout.astro'

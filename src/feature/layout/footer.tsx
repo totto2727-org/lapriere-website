@@ -2,8 +2,7 @@ import { component$ } from '@builder.io/qwik'
 
 import { globalNavigationContents } from '@/feature/content'
 import { cx } from '@/feature/style'
-import { container } from '@/feature/ui/container'
-import { ExternalLink } from '@/feature/ui/link'
+import { container, ExternalLink } from '@/feature/ui'
 import DeviconGithub from '~icons/devicon/github'
 import DeviconTwitter from '~icons/devicon/twitter'
 

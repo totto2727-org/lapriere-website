@@ -1,10 +1,10 @@
 import Cookies from 'js-cookie'
 
-import { loadColorThemeOnClientCookie } from '../client-cookie'
 import {
 	addColorThemeChangeEventListener,
 	getColorThemeChangeEventDefaultTarget,
-} from '../event'
+	loadColorThemeOnClientCookie,
+} from '../lib'
 
 // テーマの設定
 // 不適切な値であれば初期値にリセット

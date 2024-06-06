@@ -4,7 +4,7 @@ import * as Links from '@/feature/link'
 
 export const globalNavigationContents: {
 	name: string
-	shotName?: string
+	shortName?: string
 	contents: {
 		name: string
 		shortName?: string
@@ -26,7 +26,7 @@ export const globalNavigationContents: {
 	},
 	{
 		name: 'もっとらぷりを知る',
-		shotName: 'らぷりを知る',
+		shortName: 'らぷりを知る',
 		contents: [
 			{
 				name: 'これまでの歩み',

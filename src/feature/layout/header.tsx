@@ -1,9 +1,8 @@
 import { component$, Slot } from '@builder.io/qwik'
 
 import { globalNavigationContents } from '@/feature/content'
-import { ColorThemePopupButton } from '@/feature/theme/component'
-import { dropDown, dropDownContent } from '@/feature/ui/drop-down'
-import { Ul } from '@/feature/ui/list'
+import { ColorThemePopupButton } from '@/feature/theme'
+import { dropDown, dropDownContent, Ul } from '@/feature/ui'
 
 import { container } from '../ui/container'
 
@@ -45,7 +44,7 @@ export const BaseHeader = component$(() => {
 						style={dropDown.style}
 					>
 						<BaseHeaderDropDownTrigger>
-							{nav.shotName ?? nav.name}
+							{nav.shortName ?? nav.name}
 						</BaseHeaderDropDownTrigger>
 						<Ul
 							role="list"

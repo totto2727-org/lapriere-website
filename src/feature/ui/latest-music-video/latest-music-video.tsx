@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 
-export const latestMusicVideoIFrameClass = `aspect-square w-screen max-w-full sm:px-4 sm:aspect-video`
+import { latestMusicVideoIFrameClass } from './_style'
 
 export const LatestMusicVideo = component$<{
 	title: string

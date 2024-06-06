@@ -1,1 +1,0 @@
-export { globalNavigationContents } from './data'
