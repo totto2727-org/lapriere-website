@@ -3,12 +3,9 @@
 	"type": "module",
 	"version": "0.0.1",
 	"imports": {
-		"#/*": {
-			"development": [
-				"./src/*.development.js",
-				"./src/*.development.astro"
-			],
-			"default": "./src/*"
+		"#js/*": {
+			"development": "./src/*.development.js",
+			"default": "./src/*.js"
 		}
 	},
 	"scripts": {
