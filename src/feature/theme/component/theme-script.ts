@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
 
 import {
-	addColorThemeChangeEventListener,
-	getColorThemeChangeEventDefaultTarget,
-	loadColorThemeOnClientCookie,
+  addColorThemeChangeEventListener,
+  getColorThemeChangeEventDefaultTarget,
+  loadColorThemeOnClientCookie,
 } from '../lib'
 
 // テーマの設定

@@ -1,26 +1,26 @@
 ---
 import { BaseFooter, BaseHead, BaseHeader, HtmlLayout } from '@/feature/layout'
-import { Calender, container } from '@/feature/ui'
+import { Calender, container } from '@/feature/ui';
 ---
 
 <HtmlLayout>
-	<BaseHead slot="head" />
-	<BaseHeader />
-	<main class={container()}>
-		<div class="flex flex-col gap-12">
-			<div class="flex flex-col gap-8">
-				<Calender
-					title="La prière公式イベントカレンダー"
-					iframeUrl="https://calendar.google.com/calendar/embed?src=5770ff86b6cd73ceb578119eda94710cb15b5e7457c2c68120029806d9551c3d%40group.calendar.google.com&ctz=Asia%2FTokyo"
-					icsUrl="https://calendar.google.com/calendar/ical/5770ff86b6cd73ceb578119eda94710cb15b5e7457c2c68120029806d9551c3d%40group.calendar.google.com/public/basic.ics"
-				/>
-				<Calender
-					title="La prière非公式イベントカレンダー"
-					iframeUrl="https://calendar.google.com/calendar/embed?src=f4fde65f928c17fbe46a8a369311a87ce8c8dac9c9a129d1088d591b339548b9%40group.calendar.google.com&ctz=Asia%2FTokyo"
-					icsUrl="https://calendar.google.com/calendar/ical/f4fde65f928c17fbe46a8a369311a87ce8c8dac9c9a129d1088d591b339548b9%40group.calendar.google.com/public/basic.ics"
-				/>
-			</div>
-		</div>
-	</main>
-	<BaseFooter />
+  <BaseHead slot="head" />
+  <BaseHeader />
+  <main class={container()}>
+    <div class="flex flex-col gap-12">
+      <div class="flex flex-col gap-8">
+        <Calender
+          title="La prière公式イベントカレンダー"
+          iframeUrl="https://calendar.google.com/calendar/embed?src=5770ff86b6cd73ceb578119eda94710cb15b5e7457c2c68120029806d9551c3d%40group.calendar.google.com&ctz=Asia%2FTokyo"
+          icsUrl="https://calendar.google.com/calendar/ical/5770ff86b6cd73ceb578119eda94710cb15b5e7457c2c68120029806d9551c3d%40group.calendar.google.com/public/basic.ics"
+        />
+        <Calender
+          title="La prière非公式イベントカレンダー"
+          iframeUrl="https://calendar.google.com/calendar/embed?src=f4fde65f928c17fbe46a8a369311a87ce8c8dac9c9a129d1088d591b339548b9%40group.calendar.google.com&ctz=Asia%2FTokyo"
+          icsUrl="https://calendar.google.com/calendar/ical/f4fde65f928c17fbe46a8a369311a87ce8c8dac9c9a129d1088d591b339548b9%40group.calendar.google.com/public/basic.ics"
+        />
+      </div>
+    </div>
+  </main>
+  <BaseFooter />
 </HtmlLayout>
