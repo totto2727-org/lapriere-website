@@ -35,9 +35,13 @@ jobs:
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
 
+      - name: Remove download attribute
+        if: failure()
+        run: |
+          sed -i 's/download:Kv\(e\),//g' playwright-report/index.html
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
-        if: failure()
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
