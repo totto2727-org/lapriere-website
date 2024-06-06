@@ -1,35 +1,39 @@
 ---
 import {
-	COLOR_THEME_MODE_COOKIE_NAME,
-	COLOR_THEME_PALETTE_COOKIE_NAME,
-} from '../lib'
+  COLOR_THEME_MODE_COOKIE_NAME,
+  COLOR_THEME_PALETTE_COOKIE_NAME,
+} from '../lib';
 ---
 
 <script
-	is:inline
-	define:vars={{
-		mode: COLOR_THEME_MODE_COOKIE_NAME,
-		palette: COLOR_THEME_PALETTE_COOKIE_NAME,
-	}}
+  is:inline
+  define:vars={{
+    mode: COLOR_THEME_MODE_COOKIE_NAME,
+    palette: COLOR_THEME_PALETTE_COOKIE_NAME,
+  }}
 >
-	// ページ読み込み後、バリデーション込みで再度値を代入するため、ここでは実装の軽量さを優先して検証なしで代入
-	const cookies = document.cookie.split('; ')
+// ページ読み込み後、バリデーション込みで再度値を代入するため、ここでは実装の軽量さを優先して検証なしで代入
+const cookies = document.cookie.split('; ')
 
-	document.documentElement.dataset.theme = cookies
-		// @ts-expect-error inline script
-		?.find(row => row.startsWith(mode))
-		?.split('=')[1]
+document.documentElement.dataset.theme = cookies
+// @ts-expect-error inline script
+  ?.find(row => row.startsWith(mode))
+  ?.split('=')[1]
 
-	document.documentElement.dataset.palette = cookies
-		// @ts-expect-error inline acript
-		?.find(row => row.startsWith(palette))
-		?.split('=')[1]
+document.documentElement.dataset.palette = cookies
+// @ts-expect-error inline acript
+  ?.find(row => row.startsWith(palette))
+  ?.split('=')[1]
 </script>
 
 <script>
 import Cookies from 'js-cookie'
 
-import { addColorThemeChangeEventListener,	getColorThemeChangeEventDefaultTarget, loadColorThemeOnClientCookie } from '../lib'
+import {
+  addColorThemeChangeEventListener,
+  getColorThemeChangeEventDefaultTarget,
+  loadColorThemeOnClientCookie,
+} from '../lib'
 
 // テーマの設定
 // 不適切な値であれば初期値にリセット

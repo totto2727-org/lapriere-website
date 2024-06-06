@@ -1,67 +1,67 @@
 {
-	"extends": [
-		"config:recommended",
-		"schedule:weekends",
-		"schedule:automergeWeekends",
-		":prConcurrentLimit20",
-		":prHourlyLimitNone",
-		":timezone(Asia/Tokyo)"
-	],
-	"labels": ["renovate", "deps"],
-	"commitMessagePrefix": "feat(deps): ",
-	"packageRules": [
-		{
-			"description": "Automerge patch updates",
-			"matchUpdateTypes": ["patch"]
-		},
-		{
-			"description": "Automerge minor updates",
-			"matchUpdateTypes": ["minor"]
-		},
-		{
-			"matchPackagePatterns": ["astro-integration-kit"],
-			"enabled": false
-		},
-		{
-			"groupName": "runtime",
-			"matchPackagePatterns": ["bun"],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "css",
-			"matchPackagePatterns": [
-				"cva",
-				"css",
-				"sass",
-				"tailwind-merge",
-				"daisyui"
-			],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "icon",
-			"matchPackagePatterns": ["icon", "svg"],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "astro",
-			"matchPackagePatterns": ["astro", "remark", "rehype"],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "format",
-			"matchPackagePatterns": ["prettier"],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "typescript",
-			"matchPackagePatterns": ["typescript"],
-			"matchUpdateTypes": ["major", "minor"]
-		},
-		{
-			"groupName": "linter",
-			"matchPackagePatterns": ["eslint", "stylelint"],
-			"matchUpdateTypes": ["major", "minor"]
-		}
-	]
+  "extends": [
+    "config:recommended",
+    "schedule:weekends",
+    "schedule:automergeWeekends",
+    ":prConcurrentLimit20",
+    ":prHourlyLimitNone",
+    ":timezone(Asia/Tokyo)"
+  ],
+  "labels": ["renovate", "deps"],
+  "commitMessagePrefix": "feat(deps): ",
+  "packageRules": [
+    {
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"]
+    },
+    {
+      "description": "Automerge minor updates",
+      "matchUpdateTypes": ["minor"]
+    },
+    {
+      "matchPackagePatterns": ["astro-integration-kit"],
+      "enabled": false
+    },
+    {
+      "groupName": "runtime",
+      "matchPackagePatterns": ["bun"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "css",
+      "matchPackagePatterns": [
+        "cva",
+        "css",
+        "sass",
+        "tailwind-merge",
+        "daisyui"
+      ],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "icon",
+      "matchPackagePatterns": ["icon", "svg"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "astro",
+      "matchPackagePatterns": ["astro", "remark", "rehype"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "format",
+      "matchPackagePatterns": ["prettier"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "typescript",
+      "matchPackagePatterns": ["typescript"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "linter",
+      "matchPackagePatterns": ["eslint", "stylelint"],
+      "matchUpdateTypes": ["major", "minor"]
+    }
+  ]
 }

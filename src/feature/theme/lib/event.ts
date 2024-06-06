@@ -12,7 +12,7 @@ const COLOR_THEME_CHANGE_EVENT = 'color-theme'
  * 現在はデフォルトでHTMLタグを返します。
  */
 export function getColorThemeChangeEventDefaultTarget() {
-	return document.documentElement
+  return document.documentElement
 }
 
 const COLOR_THEME_MODE_ATTRIBUTE = 'data-theme'
@@ -29,19 +29,19 @@ type ColorThemeChangeEvent = CustomEvent<Partial<ColorTheme>>
  * @param target テーマに関する属性を持った要素
  */
 function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement) {
-	const value = event.detail
-	if (!value)
-		return
+  const value = event.detail
+  if (!value)
+    return
 
-	if (value.mode) {
-		// daisyUIのテーマ変更に対応するために、data-theme属性を指定
-		// daisyUIのテーマを完全に上書きする場合は独自の属性を指定しても良い
-		target.setAttribute(COLOR_THEME_MODE_ATTRIBUTE, value.mode)
-	}
-	if (value.palette) {
-		target.setAttribute(COLOR_THEME_PALETTE_ATTRIBUTE, value.palette)
-	}
-	saveColorThemeOnCookie(value)
+  if (value.mode) {
+    // daisyUIのテーマ変更に対応するために、data-theme属性を指定
+    // daisyUIのテーマを完全に上書きする場合は独自の属性を指定しても良い
+    target.setAttribute(COLOR_THEME_MODE_ATTRIBUTE, value.mode)
+  }
+  if (value.palette) {
+    target.setAttribute(COLOR_THEME_PALETTE_ATTRIBUTE, value.palette)
+  }
+  saveColorThemeOnCookie(value)
 }
 
 /**
@@ -53,15 +53,15 @@ function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement) {
  * @param targetElement テーマに関する属性を持った要素
  */
 export function dispatchColorThemeChange(
-	theme: Partial<ColorTheme>,
-	targetElement: HTMLElement,
+  theme: Partial<ColorTheme>,
+  targetElement: HTMLElement,
 ) {
-	const event: ColorThemeChangeEvent = new CustomEvent(
-		COLOR_THEME_CHANGE_EVENT,
-		{ detail: theme },
-	)
+  const event: ColorThemeChangeEvent = new CustomEvent(
+    COLOR_THEME_CHANGE_EVENT,
+    { detail: theme },
+  )
 
-	targetElement.dispatchEvent(event)
+  targetElement.dispatchEvent(event)
 }
 
 /**
@@ -85,8 +85,8 @@ export function dispatchColorThemeChange(
  * @param targetElement テーマに関する属性を持った要素
  */
 export function addColorThemeChangeEventListener(targetElement: HTMLElement) {
-	targetElement.addEventListener(COLOR_THEME_CHANGE_EVENT, (e) => {
-		// TODO as
-		onColorThemeChange(e as ColorThemeChangeEvent, targetElement)
-	})
+  targetElement.addEventListener(COLOR_THEME_CHANGE_EVENT, (e) => {
+    // TODO as
+    onColorThemeChange(e as ColorThemeChangeEvent, targetElement)
+  })
 }
