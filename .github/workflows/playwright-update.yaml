@@ -21,7 +21,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Install packages
-        run: apt-get update & apt-get install -y git wget
+        run: apt-get update & apt-get install -y git wget fonts-noto unzip
 
       - uses: actions/checkout@v4
         with:

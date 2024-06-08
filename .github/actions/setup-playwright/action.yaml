@@ -4,9 +4,8 @@ description: setup playwright
 runs:
   using: composite
   steps:
-    - shell: bash
-      run: |
-        apt-get update && apt-get install -y fonts-noto unzip
+    # - shell: bash
+    #   run: |
+    #     apt-get update && apt-get install -y fonts-noto unzip
 
     - uses: ./.github/actions/setup-js
-
