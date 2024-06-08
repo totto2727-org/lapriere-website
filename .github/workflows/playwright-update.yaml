@@ -16,16 +16,11 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.44.1-jammy
+      image: totto2727/playwright-jp:latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       LANG: ja_JP.UTF-8
     steps:
-      - name: Install packages
-        run: |
-          apt-get update && \
-          apt-get install -y git wget
-
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
@@ -49,14 +44,6 @@ jobs:
           git add ./src/playwright
           git commit -m "test: update screenshots. ${GITHUB_REF_NAME}"
           git push --force origin update-screenshots/${GITHUB_REF_NAME}
-
-      - name: Install Github CLI
-        run: |
-          mkdir -p -m 755 /etc/apt/keyrings \
-          && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \ && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-          && apt-get update \
-          && apt-get -y install gh
 
       - name: Create PR
         continue-on-error: true

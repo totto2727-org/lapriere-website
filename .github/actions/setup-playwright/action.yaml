@@ -4,10 +4,4 @@ description: setup playwright
 runs:
   using: composite
   steps:
-    - shell: bash
-      run: |
-        apt-get update && \
-        apt-get install -y fontconfig fonts-noto-cjk unzip && \
-        fc-cache -fv
-
     - uses: ./.github/actions/setup-js
