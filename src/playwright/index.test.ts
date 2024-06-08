@@ -6,13 +6,13 @@ test.describe('ホームページ（/）のE2Eテスト', () => {
     await page.waitForLoadState('load')
   })
 
-  test('遷移直後のVRT', async ({ page }) => {
+  test('遷移直後のVRT', { tag: '@vrt' }, async ({ page }) => {
     await expect(page).toHaveScreenshot({
       fullPage: true,
     })
   })
 
-  test('遷移直後のアクセシビリティテスト', async ({ page }) => {
+  test('遷移直後のアクセシビリティテスト', { tag: '@a11y' }, async ({ page }) => {
     await expect(page).toPassAxe()
   })
 })

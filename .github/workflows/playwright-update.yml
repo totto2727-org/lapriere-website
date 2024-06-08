@@ -29,7 +29,7 @@ jobs:
       - uses: ./.github/actions/setup-js
 
       - name: Run Playwright tests
-        run: na playwright test -u
+        run: na playwright test -u --grep @vrt
         env:
           PLAYWRIGHT_TEST_BASE_URL: https://lapriere.totto2727.dev
 
