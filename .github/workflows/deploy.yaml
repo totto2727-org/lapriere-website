@@ -39,11 +39,11 @@ jobs:
         uses: bobheadxi/deployments@v1
         if: always()
         with:
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
 
     outputs:
@@ -63,6 +63,7 @@ jobs:
         uses: bobheadxi/deployments@v1
         id: deployment
         with:
+          deployment_id: ${{ github.ref }}
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
           env: playwright
@@ -98,5 +99,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
