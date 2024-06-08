@@ -1,19 +1,28 @@
 name: Deploy
 
 on:
-  workflow_dispatch:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+      CLOUDFLARE_API_TOKEN:
+        required: true
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
 
 permissions:
   deployments: write
 
 jobs:
-  deploy:
+  E2E:
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.44.1-jammy
     steps:
       - uses: actions/checkout@v4
 
@@ -23,13 +32,21 @@ jobs:
         with:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
-          env: web-site
+          env: playwright
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - uses: ./.github/actions/setup-js
+      - uses: ./.github/actions/setup-playwright
 
-      - name: Build
-        run: nr build
+      - name: Run Playwright tests
+        continue-on-error: true
+        run: na playwright test
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.url }}
+          HOME: /root
+
+      - name: Remove download attribute
+        run: |
+          sed -i 's|,download:Kv(e)||g' playwright-report/index.html
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -37,7 +54,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=lapriere-website
+          command: pages deploy playwright-report --project-name=lapriere-website-playwright
 
       - name: update deployment status
         uses: bobheadxi/deployments@v1
@@ -50,26 +67,3 @@ jobs:
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
           ref: ${{ github.head_ref || github.ref_name }}
-
-    outputs:
-      deploy_url: ${{ steps.deploy.outputs.deployment-url }}
-
-  e2e-test:
-    needs: deploy
-    if: github.event_name == 'pull_request'
-    uses: ./.github/workflows/playwright-test.yaml
-    secrets:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    with:
-      url: ${{ needs.deploy.outputs.deploy_url }}
-
-  e2e-update:
-    needs: deploy
-    if: github.event_name != 'pull_request'
-    uses: ./.github/workflows/playwright-update.yaml
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    with:
-      url: ${{ needs.deploy.outputs.deploy_url }}

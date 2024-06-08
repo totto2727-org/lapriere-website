@@ -1,10 +1,14 @@
 name: Playwright Updates
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
 
 permissions:
   pull-requests: write
@@ -23,10 +27,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - run: |
-          apt-get update && apt-get install -y fonts-noto unzip
-
-      - uses: ./.github/actions/setup-js
+      - uses: ./.github/actions/setup-playwright
 
       - name: Run Playwright tests
         run: na playwright test -u --grep @vrt
