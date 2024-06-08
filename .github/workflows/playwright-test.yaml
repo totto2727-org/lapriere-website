@@ -1,4 +1,4 @@
-name: Deploy
+name: E2E Test
 
 on:
   workflow_call:
@@ -16,7 +16,7 @@ permissions:
   deployments: write
 
 jobs:
-  E2E:
+  e2e-test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:

@@ -1,4 +1,4 @@
-name: Playwright Updates
+name: VRT Update
 
 on:
   workflow_call:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  test:
+  vrt-update:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:
@@ -20,6 +20,9 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Install git
+        run: apt-get update & apt-get install git -y
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
@@ -35,6 +38,7 @@ jobs:
       - name: Commit ScreenShot
         run: |
           set -x
+          git config --global --add safe.directory $PWD
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git branch -f update-screenshots/${GITHUB_REF_NAME} ${GITHUB_REF_NAME}

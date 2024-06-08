@@ -65,7 +65,7 @@ jobs:
     with:
       url: ${{ needs.deploy.outputs.deploy_url }}
 
-  e2e-update:
+  vrt-update:
     needs: deploy
     if: github.event_name != 'pull_request'
     uses: ./.github/workflows/playwright-update.yaml
