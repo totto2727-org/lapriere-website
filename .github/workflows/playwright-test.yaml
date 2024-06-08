@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.44.1-jammy
+    env:
+      LANG: ja_JP.UTF-8
     steps:
       - uses: actions/checkout@v4
 

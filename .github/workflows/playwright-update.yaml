@@ -19,6 +19,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.44.1-jammy
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      LANG: ja_JP.UTF-8
     steps:
       - name: Install packages
         run: |
