@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   pull_request:
 
+permissions:
+  deployments: write
+
 jobs:
   deploy:
     timeout-minutes: 10
