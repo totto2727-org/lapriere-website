@@ -16,6 +16,8 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.44.1-jammy
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -23,10 +25,10 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - uses: ./.github/actions/setup-js
+      - run: |
+          apt update && apt install fonts-noto
 
-      - name: Install Playwright
-        run: na playwright install --with-deps
+      - uses: ./.github/actions/setup-js
 
       - name: Run Playwright tests
         run: na playwright test -u
