@@ -71,7 +71,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - run: |
-          apt update -y && apt install -y fonts-noto
+          apt-get update && apt-get install -y fonts-noto unzip
 
       - uses: ./.github/actions/setup-js
 
