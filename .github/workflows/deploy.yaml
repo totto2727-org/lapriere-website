@@ -83,6 +83,7 @@ jobs:
         run: na playwright test
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ needs.deploy.outputs.deploy_url }}
+          HOME: /root
 
       - name: Remove download attribute
         run: |

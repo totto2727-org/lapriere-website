@@ -21,11 +21,11 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'webkit',
+      name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
     {
-      name: 'firefox',
+      name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
     {
