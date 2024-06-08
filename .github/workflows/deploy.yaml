@@ -7,13 +7,12 @@ on:
     branches:
       - main
 
-permissions:
-  deployments: write
-
 jobs:
   deploy:
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
     steps:
       - uses: actions/checkout@v4
 
@@ -58,6 +57,8 @@ jobs:
     needs: deploy
     if: github.event_name == 'pull_request'
     uses: ./.github/workflows/playwright-test.yaml
+    permissions:
+      deployments: write
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -68,5 +69,8 @@ jobs:
     needs: deploy
     if: github.event_name != 'pull_request'
     uses: ./.github/workflows/playwright-update.yaml
+    permissions:
+      pull-requests: write
+      contents: write
     with:
       url: ${{ needs.deploy.outputs.deploy_url }}
