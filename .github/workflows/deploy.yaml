@@ -1,16 +1,13 @@
 name: Deploy
 
 on:
-  push:
+  workflow_dispatch:
+  pull_request:
 
 jobs:
   deploy:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-      statuses: write
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +23,18 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=lapriere-website
+    outputs:
+      deploy_url: ${{ steps.deploy.outputs.deployment-url }}
+
+  E2E:
+    needs: deploy
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged != true
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-js
 
       - name: Install Playwright
         run: na playwright install --with-deps
@@ -34,7 +43,7 @@ jobs:
         continue-on-error: true
         run: na playwright test
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ steps.deploy.outputs.deployment-url }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.deploy.outputs.deploy_url }}
 
       - name: Remove download attribute
         run: |

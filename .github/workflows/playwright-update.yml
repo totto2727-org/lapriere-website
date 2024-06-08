@@ -1,0 +1,49 @@
+name: Playwright Updates
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  test:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: ./.github/actions/setup-js
+
+      - name: Install Playwright
+        run: na playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: na playwright test -u
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: https://lapriere.totto2727.dev
+
+      - name: Commit ScreenShot
+        run: |
+          set -x
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git branch -f update-screenshots/${GITHUB_REF_NAME} ${GITHUB_REF_NAME}
+          git switch update-screenshots/${GITHUB_REF_NAME}
+          git add ./src/playwright
+          git commit -m "test: update screenshots. ${GITHUB_REF_NAME}"
+          git push --force origin update-screenshots/${GITHUB_REF_NAME}
+
+      - name: Create PR
+        continue-on-error: true
+        run: gh pr create --base ${GITHUB_REF_NAME} --head update-screenshots/${GITHUB_REF_NAME} --title "update-screenshots ${GITHUB_REF_NAME}" --body ""
