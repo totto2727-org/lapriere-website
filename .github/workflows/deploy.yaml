@@ -21,6 +21,7 @@ jobs:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
           env: web-site
+          ref: ${{ github.head_ref }}
 
       - uses: ./.github/actions/setup-js
 
@@ -45,6 +46,7 @@ jobs:
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
+          ref: ${{ github.head_ref }}
 
     outputs:
       deploy_url: ${{ steps.deploy.outputs.deployment-url }}
@@ -63,10 +65,10 @@ jobs:
         uses: bobheadxi/deployments@v1
         id: deployment
         with:
-          deployment_id: ${{ github.ref }}
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
           env: playwright
+          ref: ${{ github.head_ref }}
 
       - run: |
           apt update -y && apt install -y fonts-noto
@@ -95,8 +97,10 @@ jobs:
         uses: bobheadxi/deployments@v1
         if: always()
         with:
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
+          ref: ${{ github.head_ref }}
