@@ -2,8 +2,7 @@ name: Playwright Updates
 
 on:
   workflow_dispatch:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - main
 
@@ -13,7 +12,6 @@ permissions:
 
 jobs:
   test:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:
@@ -23,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref_name }}
 
       - run: |
           apt-get update && apt-get install -y fonts-noto unzip
@@ -40,14 +38,12 @@ jobs:
           set -x
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git branch -f update-screenshots/${G_HEAD_REF} ${G_HEAD_REF}
-          git switch update-screenshots/${G_HEAD_REF}
+          git branch -f update-screenshots/${GITHUB_REF_NAME} ${GITHUB_REF_NAME}
+          git switch update-screenshots/${GITHUB_REF_NAME}
           git add ./src/playwright
-          git commit -m "test: update screenshots. ${G_HEAD_REF}"
-          git push --force origin update-screenshots/${G_HEAD_REF}
-        env:
-          G_HEAD_REF: ${{ github.head_ref }}
+          git commit -m "test: update screenshots. ${GITHUB_REF_NAME}"
+          git push --force origin update-screenshots/${GITHUB_REF_NAME}
 
       - name: Create PR
         continue-on-error: true
-        run: gh pr create --base ${G_HEAD_REF} --head update-screenshots/${G_HEAD_REF} --title "update-screenshots ${G_HEAD_REF}" --body ""
+        run: gh pr create --base ${GITHUB_REF_NAME} --head update-screenshots/${GITHUB_REF_NAME} --title "update-screenshots ${GITHUB_REF_NAME}" --body ""
