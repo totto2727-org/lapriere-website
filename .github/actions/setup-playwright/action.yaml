@@ -7,6 +7,7 @@ runs:
     - shell: bash
       run: |
         apt-get update && \
-        apt-get install -y fonts-noto unzip
+        apt-get install -y fontconfig fonts-noto-cjk unzip && \
+        fc-cache -fv
 
     - uses: ./.github/actions/setup-js
