@@ -18,7 +18,7 @@
     "astro": "astro",
     "check": "npm-run-all --parallel check:stylelint check:eslint check:astro check:tsc",
     "check:tsc": "tsc --noEmit",
-    "check:astro": "astro check --minimumSeverity warning",
+    "check:astro": "astro check",
     "check:stylelint": "stylelint '**/*.{html,astro,css,scss}'",
     "check:eslint": "eslint .",
     "fix": "npm-run-all fix:stylelint fix:eslint",

@@ -6,7 +6,9 @@
     "jsxImportSource": "@builder.io/qwik",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "types": [
       "bun-types",
@@ -21,5 +23,8 @@
         "name": "@astrojs/ts-plugin"
       }
     ]
-  }
+  },
+  "exclude": [
+    "dist/"
+  ]
 }
