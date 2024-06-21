@@ -26,6 +26,9 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   vite: {
+    optimizeDeps: {
+      exclude: ['fsevents'],
+    },
     plugins: [
       Icons({
         compiler: 'jsx',
