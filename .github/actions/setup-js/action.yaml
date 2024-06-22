@@ -5,7 +5,7 @@ runs:
     - uses: jdx/mise-action@v2
     - name: Global Packages Install
       shell: bash
-      run: bun i -g @antfu/ni
+      run: npm i -g @antfu/ni
     - name: Packages Install
       shell: bash
       run: ni i
