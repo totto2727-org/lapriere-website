@@ -17,17 +17,21 @@ import { colorThemeValidator } from './type'
 export function saveColorThemeOnCookie(theme: Partial<ColorTheme>) {
   const validatedTheme = parse(colorThemeValidator, theme)
 
-  Cookies.set(
-    COLOR_THEME_MODE_COOKIE_NAME,
-    validatedTheme.mode,
-    COLOR_THEME_COOKIE_OPTION,
-  )
+  if (theme.mode) {
+    Cookies.set(
+      COLOR_THEME_MODE_COOKIE_NAME,
+      validatedTheme.mode,
+      COLOR_THEME_COOKIE_OPTION,
+    )
+  }
 
-  Cookies.set(
-    COLOR_THEME_PALETTE_COOKIE_NAME,
-    validatedTheme.palette,
-    COLOR_THEME_COOKIE_OPTION,
-  )
+  if (theme.palette) {
+    Cookies.set(
+      COLOR_THEME_PALETTE_COOKIE_NAME,
+      validatedTheme.palette,
+      COLOR_THEME_COOKIE_OPTION,
+    )
+  }
 }
 
 /**
@@ -39,7 +43,7 @@ export function loadColorThemeOnClientCookie(
   cookie: Partial<Record<string, string>>,
 ): ColorTheme {
   const mode = cookie[COLOR_THEME_MODE_COOKIE_NAME]
-  const palette = cookie[COLOR_THEME_MODE_COOKIE_NAME]
+  const palette = cookie[COLOR_THEME_PALETTE_COOKIE_NAME]
 
   return parse(colorThemeValidator, { mode, palette })
 }

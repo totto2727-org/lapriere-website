@@ -28,10 +28,10 @@ const COLOR_THEME_PALETTE_RATIO_NAME = 'color-theme-palette-ratio'
 interface RatioProps<T extends string> {
   value: T
   label: string
-  checkedValue: T
+  checked: boolean
 }
 
-export const ColorThemeModeRatio = component$<RatioProps<ColorThemeMode>>(
+export const ColorThemeModeRatio_ = component$<RatioProps<ColorThemeMode>>(
   (props) => {
     const id = `${props.label}-${props.value}`
 
@@ -75,14 +75,14 @@ export const ColorThemeModeRatio = component$<RatioProps<ColorThemeMode>>(
         name={COLOR_THEME_MODE_RATIO_NANE}
         aria-label={props.label}
         value={props.value}
-        checked={props.checkedValue === props.value}
+        checked={props.checked}
         class={ratioClass}
       />
     )
   },
 )
 
-export const ColorModePaletteRatio = component$<RatioProps<ColorThemePalette>>(
+export const ColorModePaletteRatio_ = component$<RatioProps<ColorThemePalette>>(
   (props) => {
     const id = `${props.label}-${props.value}`
 
@@ -121,14 +121,14 @@ export const ColorModePaletteRatio = component$<RatioProps<ColorThemePalette>>(
         name={COLOR_THEME_PALETTE_RATIO_NAME}
         aria-label={props.label}
         value={props.value}
-        checked={props.checkedValue === props.value}
+        checked={props.checked}
         class={ratioClass}
       />
     )
   },
 )
 
-export const ColorModeLegend = component$(() => {
+export const ColorModeLegend_ = component$(() => {
   return (
     <legend class="menu-title text-center">
       <Slot />
@@ -136,10 +136,45 @@ export const ColorModeLegend = component$(() => {
   )
 })
 
-export const ColorThemePopupButton = component$(() => {
+const modes = [
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+] as const
+
+const palettes = [
+  {
+    label: 'La prière',
+    value: 'lapriere',
+  },
+  {
+    label: '棗いつき',
+    value: 'tamu',
+  },
+  {
+    label: '藍月なくる',
+    value: 'nakutya',
+  },
+  {
+    label: 'nayuta',
+    value: 'nayuta',
+  },
+] as const
+
+interface ThemeSignalLoaded { type: 'loaded', theme: ColorTheme }
+interface ThemeSignalUnLoaded { type: 'unloaded' }
+type ThemeSignal = ThemeSignalLoaded | ThemeSignalUnLoaded
+
+function isLoaded(x: ThemeSignal): x is ThemeSignalLoaded {
+  return x.type === 'loaded'
+}
+
+export const ColorThemeChangeButton = component$(() => {
   const themeStore = useSignal<
-    { type: 'loaded', theme: ColorTheme } | { type: 'unloaded' }
+    ThemeSignal
   >({ type: 'unloaded' })
+
+  // TypeScriptの型推論の都合で切り出し
+  const themeStoreValue = themeStore.value
 
   useVisibleTask$(() => {
     themeStore.value = {
@@ -164,58 +199,30 @@ export const ColorThemePopupButton = component$(() => {
           class="size-6 sm:size-8"
         />
       </div>
-      {themeStore.value.type === 'loaded'
+      {isLoaded(themeStoreValue)
         ? (
           <form
             tabIndex={dropDownContent.tabIndex}
             class={dropDownContent.class()}
           >
             <fieldset>
-              <ColorModeLegend>Mode</ColorModeLegend>
+              <ColorModeLegend_>Mode</ColorModeLegend_>
               <div class="join join-vertical w-full">
-                <ColorThemeModeRatio
-                  label="Light"
-                  value="light"
-                  checkedValue={themeStore.value.theme.mode}
-                />
-                <ColorThemeModeRatio
-                  label="Dark"
-                  value="dark"
-                  checkedValue={themeStore.value.theme.mode}
-                />
+                {modes.map(v => <ColorThemeModeRatio_ {...v} checked={v.value === themeStoreValue.theme.mode} />)}
               </div>
             </fieldset>
 
             <fieldset>
-              <ColorModeLegend>Palette</ColorModeLegend>
+              <ColorModeLegend_>Palette</ColorModeLegend_>
               <div class="join join-vertical w-full">
-                <ColorModePaletteRatio
-                  label="La prière"
-                  value="lapriere"
-                  checkedValue={themeStore.value.theme.palette}
-                />
-                <ColorModePaletteRatio
-                  label="棗いつき"
-                  value="tamu"
-                  checkedValue={themeStore.value.theme.palette}
-                />
-                <ColorModePaletteRatio
-                  label="藍月なくる"
-                  value="nakutya"
-                  checkedValue={themeStore.value.theme.palette}
-                />
-                <ColorModePaletteRatio
-                  label="nayuta"
-                  value="nayuta"
-                  checkedValue={themeStore.value.theme.palette}
-                />
+                {palettes.map(v => <ColorModePaletteRatio_ {...v} checked={v.value === themeStoreValue.theme.palette} />)}
               </div>
             </fieldset>
           </form>
-          )
+        )
         : (
           <></>
-          )}
+        )}
     </div>
   )
 })

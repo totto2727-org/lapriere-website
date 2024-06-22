@@ -13,10 +13,12 @@ const { props } = Astro
 const DEFAAULT_LANG = 'ja';
 
 // bodyのonclickはiOSでドロップダウン等のフォーカスが外れない問題の対策です
+// ThemeScriptは必ず一番はじめに実行してください
 ---
 
 <html lang={props.lang ?? DEFAAULT_LANG}>
   <head>
+    <ThemeScript />
     <slot name="head" />
     <ThemeScript />
   </head>
