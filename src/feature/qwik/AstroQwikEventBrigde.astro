@@ -1,0 +1,13 @@
+---
+---
+<script>
+import { qwikAfterSwapEvent, qwikPageLoadEvent } from './event'
+
+document.addEventListener(qwikPageLoadEvent.name, () => {
+  document.dispatchEvent(qwikPageLoadEvent.create())
+})
+
+document.addEventListener(qwikAfterSwapEvent.name, () => {
+  document.dispatchEvent(qwikAfterSwapEvent.create())
+})
+</script>
