@@ -2,7 +2,6 @@ import {
   $,
   component$,
   useSignal,
-  useVisibleTask$,
 } from '@builder.io/qwik'
 
 import { usePageLoadTask } from '@/feature/qwik'
@@ -33,18 +32,12 @@ export const ColorThemeChangeButton = component$(() => {
   // TypeScriptの型推論の都合で切り出し
   const themeStoreValue = themeStore.value
 
-  useVisibleTask$(() => {
+  usePageLoadTask($(() => {
     themeStore.value = {
       type: 'loaded',
       theme: loadColorThemeFromDom(getColorThemeChangeEventDefaultTarget()),
     }
-  })
-  // usePageLoadTask($(() => {
-  //   themeStore.value = {
-  //     type: 'loaded',
-  //     theme: loadColorThemeFromDom(getColorThemeChangeEventDefaultTarget()),
-  //   }
-  // }))
+  }))
 
   return (
     <div

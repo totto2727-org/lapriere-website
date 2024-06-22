@@ -45,20 +45,18 @@ function f() {
   addColorThemeChangeEventListener(getColorThemeChangeEventDefaultTarget())
 }
 
-f()
+// 初回アクセス時の一度だけ
+document.addEventListener(
+  // astroのViewTransitionのイベントで起動する
+  'astro:page-load',
+  f,
+  { once: true },
+)
 
-// // 初回アクセス時の一度だけ
-// document.addEventListener(
-//   // astroのViewTransitionのイベントで起動する
-//   'astro:page-load',
-//   f,
-//   { once: true },
-// )
-
-// // クライアントサイドルーティングは毎回
-// document.addEventListener(
-//   // astroのViewTransitionのイベントで起動する
-//   'astro:after-swap',
-//   f,
-// )
+// クライアントサイドルーティングは毎回
+document.addEventListener(
+  // astroのViewTransitionのイベントで起動する
+  'astro:after-swap',
+  f,
+)
 </script>
