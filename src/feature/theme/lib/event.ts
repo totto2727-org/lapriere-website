@@ -25,9 +25,8 @@ class ColorThemeChangeEvent extends CustomEvent<Partial<ColorTheme>> {
    * ColorThemeChangeEventに該当しないイベントオブジェクトを渡すと例外を返します
    *
    * @param e イベント
-   * @returns
    */
-  static reconstructor(e: Event) {
+  static reconstructor(e: Event): ColorThemeChangeEvent {
     if (e instanceof ColorThemeChangeEvent) {
       return e
     }
