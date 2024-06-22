@@ -2,9 +2,7 @@ name: setup-js
 runs:
   using: composite
   steps:
-    - uses: oven-sh/setup-bun@v1
-      with:
-        bun-version: latest
+    - uses: jdx/mise-action@v2
     - name: Global Packages Install
       shell: bash
       run: bun i -g @antfu/ni
