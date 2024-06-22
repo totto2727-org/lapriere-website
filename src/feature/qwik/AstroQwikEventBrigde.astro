@@ -3,11 +3,11 @@
 <script>
 import { qwikAfterSwapEvent, qwikPageLoadEvent } from './event'
 
-document.addEventListener(qwikPageLoadEvent.name, () => {
+document.addEventListener(qwikPageLoadEvent.astroEventName, () => {
   document.dispatchEvent(qwikPageLoadEvent.create())
 })
 
-document.addEventListener(qwikAfterSwapEvent.name, () => {
+document.addEventListener(qwikAfterSwapEvent.astroEventName, () => {
   document.dispatchEvent(qwikAfterSwapEvent.create())
 })
 </script>
