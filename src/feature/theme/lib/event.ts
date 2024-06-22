@@ -1,24 +1,23 @@
-import { saveColorThemeOnCookie } from './client-cookie'
+import { saveColorThemeOnCookie } from './cookie.client'
+import { saveColorThemeOnDom } from './dom'
 import type { ColorTheme } from './type'
-
-/**
- * テーマを変更するイベント名
- */
-const COLOR_THEME_CHANGE_EVENT = 'color-theme'
 
 /**
  * テーマを変更するイベントのデフォルトのターゲットを取得する関数
  *
  * 現在はデフォルトでHTMLタグを返します。
  */
-export function getColorThemeChangeEventDefaultTarget() {
+export function getColorThemeChangeEventDefaultTarget(): HTMLElement {
   return document.documentElement
 }
 
-const COLOR_THEME_MODE_ATTRIBUTE = 'data-theme'
-const COLOR_THEME_PALETTE_ATTRIBUTE = 'data-color-theme-palette'
+class ColorThemeChangeEvent extends CustomEvent<Partial<ColorTheme>> {
+  static eventName = 'color-theme:change'
 
-type ColorThemeChangeEvent = CustomEvent<Partial<ColorTheme>>
+  constructor(theme: Partial<ColorTheme>) {
+    super(ColorThemeChangeEvent.eventName, { detail: theme })
+  }
+}
 
 /**
  * テーマ変更イベントの値に基づいてテーマに関する属性を更新する関数
@@ -28,20 +27,12 @@ type ColorThemeChangeEvent = CustomEvent<Partial<ColorTheme>>
  * @param event 変更先のテーマのイベント
  * @param target テーマに関する属性を持った要素
  */
-function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement) {
-  const value = event.detail
-  if (!value)
-    return
+function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement): void {
+  const theme = event.detail
 
-  if (value.mode) {
-    // daisyUIのテーマ変更に対応するために、data-theme属性を指定
-    // daisyUIのテーマを完全に上書きする場合は独自の属性を指定しても良い
-    target.setAttribute(COLOR_THEME_MODE_ATTRIBUTE, value.mode)
-  }
-  if (value.palette) {
-    target.setAttribute(COLOR_THEME_PALETTE_ATTRIBUTE, value.palette)
-  }
-  saveColorThemeOnCookie(value)
+  saveColorThemeOnDom(theme, target)
+
+  saveColorThemeOnCookie(theme)
 }
 
 /**
@@ -55,13 +46,8 @@ function onColorThemeChange(event: ColorThemeChangeEvent, target: HTMLElement) {
 export function dispatchColorThemeChange(
   theme: Partial<ColorTheme>,
   targetElement: HTMLElement,
-) {
-  const event: ColorThemeChangeEvent = new CustomEvent(
-    COLOR_THEME_CHANGE_EVENT,
-    { detail: theme },
-  )
-
-  targetElement.dispatchEvent(event)
+): boolean {
+  return targetElement.dispatchEvent(new ColorThemeChangeEvent(theme))
 }
 
 /**
@@ -84,9 +70,12 @@ export function dispatchColorThemeChange(
  *
  * @param targetElement テーマに関する属性を持った要素
  */
-export function addColorThemeChangeEventListener(targetElement: HTMLElement) {
-  targetElement.addEventListener(COLOR_THEME_CHANGE_EVENT, (e) => {
-    // TODO as
-    onColorThemeChange(e as ColorThemeChangeEvent, targetElement)
+export function addColorThemeChangeEventListener(targetElement: HTMLElement): void {
+  targetElement.addEventListener(ColorThemeChangeEvent.eventName, (e) => {
+    if (!(e instanceof ColorThemeChangeEvent)) {
+      return
+    }
+
+    onColorThemeChange(e, targetElement)
   })
 }
