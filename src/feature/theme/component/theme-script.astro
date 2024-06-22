@@ -6,6 +6,7 @@ import {
 
 // このコンポーネントはheadの最上位に埋め込む必要があります
 // CSSの読み込みのほうが早い場合、画面がちらつく恐れがあります
+// inlineの方はViewTransition有効時は初回アクセス時のみ実行しない
 ---
 
 <script
@@ -16,17 +17,17 @@ import {
   }}
 >
 // ページ読み込み後、バリデーション込みで再度値を代入するため、ここでは実装の軽量さを優先して検証なしで代入
-    const cookies = document.cookie.split('; ')
+const cookies = document.cookie.split('; ')
 
-    document.documentElement.dataset.theme = cookies
-    // @ts-expect-error inline script
-      ?.find(row => row.startsWith(mode))
-      ?.split('=')[1]
+document.documentElement.dataset.theme = cookies
+// @ts-expect-error inline script
+  ?.find(row => row.startsWith(mode))
+  ?.split('=')[1]
 
-    document.documentElement.dataset.palette = cookies
-    // @ts-expect-error inline acript
-      ?.find(row => row.startsWith(palette))
-      ?.split('=')[1]
+document.documentElement.dataset.palette = cookies
+// @ts-expect-error inline acript
+  ?.find(row => row.startsWith(palette))
+  ?.split('=')[1]
 </script>
 
 <script>
@@ -39,9 +40,9 @@ import {
 } from '../lib'
 
 document.addEventListener(
+  // astroのViewTransitionのイベントで起動する
   'astro:after-swap',
   () => {
-    document.dispatchEvent(new Event("qinit"))
     // テーマの設定
     // 不適切な値であれば初期値にリセット
     const theme = loadColorThemeOnClientCookie(Cookies.get())

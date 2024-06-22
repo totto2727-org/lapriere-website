@@ -2,7 +2,11 @@
 import '@/feature/style/global.scss'
 import '@/feature/style/rlc.scss'
 
+import { ViewTransitions } from 'astro:transitions'
+
+import { AstroQwikEventBrigde } from '@/feature/qwik'
 import { ThemeScript } from '@/feature/theme'
+
 
 type Props = {
   lang?: string
@@ -19,13 +23,14 @@ const DEFAAULT_LANG = 'ja';
 <html lang={props.lang ?? DEFAAULT_LANG}>
   <head>
     <ThemeScript />
+    <ViewTransitions />
     <slot name="head" />
-    <ThemeScript />
   </head>
   <body
     class="flex min-h-dvh flex-col overflow-y-scroll underline-offset-4"
     onclick="document.querySelector('body').focus()"
   >
     <slot />
+    <AstroQwikEventBrigde />
   </body>
 </html>

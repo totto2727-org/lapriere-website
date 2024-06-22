@@ -4,11 +4,11 @@ import {
   Slot,
   useOn,
   useSignal,
-  useVisibleTask$,
 } from '@builder.io/qwik'
 import Cookies from 'js-cookie'
 import { getDefault, is } from 'valibot'
 
+import { usePageLoadTask } from '@/feature/qwik'
 import { dropDown, dropDownContent } from '@/feature/ui/drop-down'
 import PaletteIcon from '~icons/material-symbols/palette-outline'
 
@@ -176,12 +176,13 @@ export const ColorThemeChangeButton = component$(() => {
   // TypeScriptの型推論の都合で切り出し
   const themeStoreValue = themeStore.value
 
-  useVisibleTask$(() => {
+  usePageLoadTask($(() => {
     themeStore.value = {
       type: 'loaded',
       theme: loadColorThemeOnClientCookie(Cookies.get()),
     }
-  })
+  },
+  ))
 
   return (
     <div
@@ -219,10 +220,10 @@ export const ColorThemeChangeButton = component$(() => {
               </div>
             </fieldset>
           </form>
-        )
+          )
         : (
           <></>
-        )}
+          )}
     </div>
   )
 })
