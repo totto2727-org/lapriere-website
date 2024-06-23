@@ -62,7 +62,7 @@
     "eslint-plugin-astro": "1.2.0",
     "eslint-plugin-format": "0.1.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
-    "eslint-plugin-tailwindcss": "3.17.2",
+    "eslint-plugin-tailwindcss": "3.17.4",
     "expect-axe-playwright": "^4.1.1",
     "htmlrewriter": "0.0.7",
     "js-cookie": "3.0.5",
