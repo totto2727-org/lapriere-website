@@ -58,8 +58,8 @@ jobs:
         uses: reg-viz/reg-actions@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-          image-directory-path: ./.snapshot
-          report-file-path: ./playwright-report/reg-suit.html
+          image-directory-path: .snapshot
+          report-file-path: playwright-report/reg-suit.html
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

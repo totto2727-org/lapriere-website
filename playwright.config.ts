@@ -6,7 +6,7 @@ expect.extend(matchers)
 
 export default defineConfig({
   testDir: 'src/playwright',
-  snapshotPathTemplate: './.snapshot/{testDir}/{testFilePath}/{arg}{ext}',
+  snapshotPathTemplate: '.snapshot/{testFilePath}/{arg}{ext}',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
