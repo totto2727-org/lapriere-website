@@ -57,7 +57,7 @@
     "astro-eslint-parser": "1.0.2",
     "bun-types": "1.1.12",
     "cva": "beta",
-    "daisyui": "4.12.2",
+    "daisyui": "4.12.10",
     "eslint": "9.4.0",
     "eslint-plugin-astro": "1.2.0",
     "eslint-plugin-format": "0.1.1",
