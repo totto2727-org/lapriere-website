@@ -10,12 +10,15 @@
   "commitMessagePrefix": "feat(deps): ",
   "packageRules": [
     {
-      "description": "Automerge patch updates",
-      "matchUpdateTypes": ["patch"]
-    },
-    {
-      "description": "Automerge minor updates",
-      "matchUpdateTypes": ["minor"]
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
     },
     {
       "matchPackagePatterns": ["astro-integration-kit"],
@@ -23,43 +26,46 @@
     },
     {
       "groupName": "runtime",
-      "matchPackagePatterns": ["bun"],
+      "matchPackageNames": ["bun-types", "typescript"],
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "groupName": "test",
+      "matchPackagePrefixes": ["@playwright"],
+      "matchPackageNames": ["expect-axe-playwright", "reg-suit"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "css",
-      "matchPackagePatterns": [
+      "matchPackagePrefixes": [
+        "@tailwindcss",
+        "tailwind"
+      ],
+      "matchPackageNames": [
         "cva",
         "css",
         "sass",
-        "tailwind-merge",
+        "postcss-html",
         "daisyui"
       ],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "icon",
-      "matchPackagePatterns": ["icon", "svg"],
+      "matchPackagePrefixes": ["@icontify", "@svgr", "@svgx"],
+      "matchPackageNames": ["unplugin-icons"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "astro",
-      "matchPackagePatterns": ["astro", "remark", "rehype"],
-      "matchUpdateTypes": ["major", "minor"]
-    },
-    {
-      "groupName": "format",
-      "matchPackagePatterns": ["prettier"],
-      "matchUpdateTypes": ["major", "minor"]
-    },
-    {
-      "groupName": "typescript",
-      "matchPackagePatterns": ["typescript"],
+      "matchPackagePatterns": ["astro", "@qwikdev", "@builder.io"],
+      "matchPackagePrefixes": ["@astro", "remark", "rehype"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "linter",
-      "matchPackagePatterns": ["eslint", "stylelint"],
+      "matchPackagePrefixes": ["@eslint", "eslint", "stylelint"],
+      "matchPackageNames": ["typescript-eslint", "@antfu/eslint-config"],
       "matchUpdateTypes": ["major", "minor"]
     }
   ]
