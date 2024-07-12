@@ -39,7 +39,7 @@
     "@astrojs/ts-plugin": "1.8.0",
     "@builder.io/qwik": "1.5.5",
     "@eslint/js": "9.4.0",
-    "@iconify-json/devicon": "1.1.43",
+    "@iconify-json/devicon": "1.1.47",
     "@iconify-json/material-symbols": "1.1.82",
     "@iconify-json/material-symbols-light": "1.1.22",
     "@iconify/tailwind": "1.1.1",
