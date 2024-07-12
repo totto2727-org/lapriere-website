@@ -21,7 +21,7 @@
       ]
     },
     {
-      "matchPackagePatterns": ["astro-integration-kit"],
+      "matchPackageNames": ["astro-integration-kit"],
       "enabled": false
     },
     {
@@ -31,15 +31,15 @@
     },
     {
       "groupName": "test",
-      "matchPackagePrefixes": ["@playwright"],
+      "matchPackagePatterns": ["^@playwright"],
       "matchPackageNames": ["expect-axe-playwright", "reg-suit"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "css",
-      "matchPackagePrefixes": [
-        "@tailwindcss",
-        "tailwind"
+      "matchPackagePatterns": [
+        "^@tailwindcss",
+        "^tailwind"
       ],
       "matchPackageNames": [
         "cva",
@@ -52,19 +52,18 @@
     },
     {
       "groupName": "icon",
-      "matchPackagePrefixes": ["@icontify", "@svgr", "@svgx"],
+      "matchPackagePatterns": ["^@iconify", "^@svgr", "^@svgx"],
       "matchPackageNames": ["unplugin-icons"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "astro",
-      "matchPackagePatterns": ["astro", "@qwikdev", "@builder.io"],
-      "matchPackagePrefixes": ["@astro", "remark", "rehype"],
+      "matchPackagePatterns": ["^astro", "^@qwikdev", "^@builder.io", "^@astro", "^remark", "^rehype"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
       "groupName": "linter",
-      "matchPackagePrefixes": ["@eslint", "eslint", "stylelint"],
+      "matchPackagePatterns": ["^@eslint", "^eslint", "^stylelint"],
       "matchPackageNames": ["typescript-eslint", "@antfu/eslint-config"],
       "matchUpdateTypes": ["major", "minor"]
     }
