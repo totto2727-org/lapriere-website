@@ -13,7 +13,13 @@ on:
         required: true
 
 permissions:
+  # デプロイ操作の許可
   deployments: write
+  # アクションの操作の許可
+  # # 主にArtifact
+  actions: write
+  # プルリクエストの操作の許可
+  pull-requests: write
 
 jobs:
   e2e-test:
@@ -26,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: start deployment
+      - name: Start deployment
         uses: bobheadxi/deployments@v1
         id: deployment
         with:
@@ -37,12 +43,11 @@ jobs:
 
       - uses: ./.github/actions/setup-playwright
 
-      - name: Run Playwright tests
+      - name: Run Playwright
         continue-on-error: true
-        run: na playwright test
+        run: na playwright test -u
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.url }}
-          HOME: /root
 
       - name: Remove download attribute
         run: |
@@ -56,7 +61,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy playwright-report --project-name=lapriere-website-playwright
 
-      - name: update deployment status
+      - name: Update deployment status
         uses: bobheadxi/deployments@v1
         if: always()
         with:
@@ -67,3 +72,9 @@ jobs:
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
           ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Run reg-suit
+        uses: reg-viz/reg-actions@v2
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          image-directory-path: ./.snapshot
