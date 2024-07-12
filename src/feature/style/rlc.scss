@@ -1,50 +1,50 @@
 .rlc-container {
-	@apply card card-bordered card-side bg-base-100 shadow-md h-32 text-base;
+  @apply card card-bordered card-side bg-base-100 shadow-md h-32 text-base;
 
-	&:hover {
-		filter: brightness(0.8);
-	}
+  &:hover {
+    filter: brightness(0.8);
+  }
 
-	animation: button-pop var(--animation-btn, 0.25s) ease-out;
+  animation: button-pop var(--animation-btn, 0.25s) ease-out;
 
-	&active:hover,
-	&:active:focus {
-		animation: button-pop 0s ease-out;
-		transform: scale(0.97);
-	}
+  &active:hover,
+  &:active:focus {
+    animation: button-pop 0s ease-out;
+    transform: scale(0.97);
+  }
 
-	transition: filter 200ms ease;
-	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition: filter 200ms ease;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .rlc-info {
-	@apply card-body gap-1 w-full text-ellipsis whitespace-nowrap overflow-hidden p-4;
+  @apply card-body gap-1 w-full text-ellipsis whitespace-nowrap overflow-hidden p-4;
 }
 
 .rlc-title {
-	@apply card-title text-[1em];
+  @apply card-title text-[1em];
 }
 
 .rlc-description {
-	@apply text-[0.75em];
+  @apply text-[0.75em];
 }
 
 .rlc-url-container {
-	@apply flex flex-row gap-4 mt-auto;
+  @apply flex flex-row gap-4 mt-auto;
 }
 
 .rlc-favicon {
-	@apply h-full w-fit;
+  @apply h-full w-fit;
 }
 
 .rlc-url {
-	@apply text-[0.75em];
+  @apply text-[0.75em];
 }
 
 .rlc-image-container {
-	@apply ml-auto aspect-auto w-fit flex-shrink-0 max-sm:hidden;
+  @apply ml-auto aspect-auto w-fit flex-shrink-0 max-sm:hidden;
 }
 
 .rlc-image {
-	@apply h-full;
+  @apply h-full;
 }

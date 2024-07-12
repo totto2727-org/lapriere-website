@@ -4,8 +4,6 @@ import tailwind from 'eslint-plugin-tailwindcss'
 
 export default antfu(
   {
-    formatters: true,
-    astro: true,
     formatters: {
       options: {
         prettierOptions: {
@@ -13,6 +11,7 @@ export default antfu(
         },
       },
     },
+    astro: true,
     typescript: {
       overrides: {
         'ts/consistent-type-imports': ['error', {

@@ -1,5 +1,10 @@
 ---
-import { COLOR_THEME_MODE_ATTRIBUTE, COLOR_THEME_MODE_COOKIE_NAME, COLOR_THEME_PALETTE_ATTRIBUTE, COLOR_THEME_PALETTE_COOKIE_NAME } from '../_const'
+import {
+  COLOR_THEME_MODE_ATTRIBUTE,
+  COLOR_THEME_MODE_COOKIE_NAME,
+  COLOR_THEME_PALETTE_ATTRIBUTE,
+  COLOR_THEME_PALETTE_COOKIE_NAME,
+} from '../_const'
 ---
 
 <script
@@ -11,52 +16,67 @@ import { COLOR_THEME_MODE_ATTRIBUTE, COLOR_THEME_MODE_COOKIE_NAME, COLOR_THEME_P
     paletteDataSetName: COLOR_THEME_PALETTE_ATTRIBUTE,
   }}
 >
-// ページ読み込み後、バリデーション込みで再度値を代入するため、ここでは実装の軽量さを優先して検証なしで代入
-const cookies = document.cookie.split('; ')
+  // ページ読み込み後、バリデーション込みで再度値を代入するため、ここでは実装の軽量さを優先して検証なしで代入
+  const cookies = document.cookie.split('; ')
 
-document.documentElement.setAttribute(modeDataSetName, cookies
-// @ts-expect-error inline script
-  ?.find(row => row.startsWith(modeCookieName))
-  ?.split('=')[1])
-document.documentElement.setAttribute(paletteDataSetName, cookies
-// @ts-expect-error inline acript
-  ?.find(row => row.startsWith(paletteCookieName))
-  ?.split('=')[1])
+  document.documentElement.setAttribute(
+    modeDataSetName,
+    cookies
+      // @ts-expect-error inline script
+      ?.find(row => row.startsWith(modeCookieName))
+      ?.split('=')[1],
+  )
+  document.documentElement.setAttribute(
+    paletteDataSetName,
+    cookies
+      // @ts-expect-error inline acript
+      ?.find(row => row.startsWith(paletteCookieName))
+      ?.split('=')[1],
+  )
 </script>
 
 <script>
-import Cookies from 'js-cookie'
+  import Cookies from 'js-cookie'
 
-import { COLOR_THEME_MODE_ATTRIBUTE, COLOR_THEME_PALETTE_ATTRIBUTE } from '../_const'
-import {
-  addColorThemeChangeEventListener,
-  getColorThemeChangeEventDefaultTarget,
-  loadColorThemeFromCookie,
-} from '../lib'
+  import {
+    COLOR_THEME_MODE_ATTRIBUTE,
+    COLOR_THEME_PALETTE_ATTRIBUTE,
+  } from '../_const'
+  import {
+    addColorThemeChangeEventListener,
+    getColorThemeChangeEventDefaultTarget,
+    loadColorThemeFromCookie,
+  } from '../lib'
 
-function f() {
-  // テーマの設定
-  // 不適切な値であれば初期値にリセット
-  const theme = loadColorThemeFromCookie(Cookies.get())
-  document.documentElement.setAttribute(COLOR_THEME_MODE_ATTRIBUTE, theme.mode)
-  document.documentElement.setAttribute(COLOR_THEME_PALETTE_ATTRIBUTE, theme.palette)
+  function f() {
+    // テーマの設定
+    // 不適切な値であれば初期値にリセット
+    const theme = loadColorThemeFromCookie(Cookies.get())
+    document.documentElement.setAttribute(
+      COLOR_THEME_MODE_ATTRIBUTE,
+      theme.mode,
+    )
+    document.documentElement.setAttribute(
+      COLOR_THEME_PALETTE_ATTRIBUTE,
+      theme.palette,
+    )
 
-  // テーマ更新のためのイベントリスナー
-  addColorThemeChangeEventListener(getColorThemeChangeEventDefaultTarget())
-}
+    // テーマ更新のためのイベントリスナー
+    addColorThemeChangeEventListener(getColorThemeChangeEventDefaultTarget())
+  }
 
-// 初回アクセス時の一度だけ
-document.addEventListener(
-  // astroのViewTransitionのイベントで起動する
-  'astro:page-load',
-  f,
-  { once: true },
-)
+  // 初回アクセス時の一度だけ
+  document.addEventListener(
+    // astroのViewTransitionのイベントで起動する
+    'astro:page-load',
+    f,
+    { once: true },
+  )
 
-// クライアントサイドルーティングは毎回
-document.addEventListener(
-  // astroのViewTransitionのイベントで起動する
-  'astro:after-swap',
-  f,
-)
+  // クライアントサイドルーティングは毎回
+  document.addEventListener(
+    // astroのViewTransitionのイベントで起動する
+    'astro:after-swap',
+    f,
+  )
 </script>

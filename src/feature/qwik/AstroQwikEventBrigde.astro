@@ -1,13 +1,15 @@
 ---
+
 ---
+
 <script>
-import { qwikAfterSwapEvent, qwikPageLoadEvent } from './event'
+  import { qwikAfterSwapEvent, qwikPageLoadEvent } from './event'
 
-document.addEventListener(qwikPageLoadEvent.astroEventName, () => {
-  document.dispatchEvent(qwikPageLoadEvent.create())
-})
+  document.addEventListener(qwikPageLoadEvent.astroEventName, () => {
+    document.dispatchEvent(qwikPageLoadEvent.create())
+  })
 
-document.addEventListener(qwikAfterSwapEvent.astroEventName, () => {
-  document.dispatchEvent(qwikAfterSwapEvent.create())
-})
+  document.addEventListener(qwikAfterSwapEvent.astroEventName, () => {
+    document.dispatchEvent(qwikAfterSwapEvent.create())
+  })
 </script>
