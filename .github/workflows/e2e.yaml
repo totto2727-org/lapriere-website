@@ -53,6 +53,14 @@ jobs:
         run: |
           sed -i 's|,download:Kv(e)||g' playwright-report/index.html
 
+      - name: Run reg-suit
+        continue-on-error: true
+        uses: reg-viz/reg-actions@v2
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          image-directory-path: ./.snapshot
+          report-file-path: ./playwright-report/reg-suit.html
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         id: deploy
@@ -72,9 +80,3 @@ jobs:
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ steps.deploy.outputs.deployment-url }}
           ref: ${{ github.head_ref || github.ref_name }}
-
-      - name: Run reg-suit
-        uses: reg-viz/reg-actions@v2
-        with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
-          image-directory-path: ./.snapshot
