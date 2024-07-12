@@ -21,6 +21,10 @@ permissions:
   # プルリクエストの操作の許可
   pull-requests: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   e2e-test:
     timeout-minutes: 10
