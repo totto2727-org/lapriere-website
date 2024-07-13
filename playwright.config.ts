@@ -21,29 +21,29 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-    // {
-    //   name: 'android',
-    //   use: { ...devices['Galaxy S8'] },
-    // },
-    // {
-    //   name: 'android tab',
-    //   use: { ...devices['Galaxy Tab S4'] },
-    // },
-    // {
-    //   name: 'iPhone',
-    //   use: { ...devices['iPhone 8'] },
-    // },
-    // {
-    //   name: 'ipad',
-    //   use: { ...devices['iPad Mini'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'android',
+      use: { ...devices['Galaxy S8'] },
+    },
+    {
+      name: 'android tab',
+      use: { ...devices['Galaxy Tab S4'] },
+    },
+    {
+      name: 'iPhone',
+      use: { ...devices['iPhone 8'] },
+    },
+    {
+      name: 'ipad',
+      use: { ...devices['iPad Mini'] },
+    },
   ],
 })
