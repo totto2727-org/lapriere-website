@@ -32,7 +32,7 @@
     {
       "groupName": "test",
       "matchPackagePatterns": ["^@playwright"],
-      "matchPackageNames": ["expect-axe-playwright", "reg-suit"],
+      "matchPackageNames": ["expect-axe-playwright", "reg-suit", "ghcr.io/totto2727-org/playwright-ja"],
       "matchUpdateTypes": ["major", "minor"]
     },
     {
