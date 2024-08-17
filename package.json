@@ -43,7 +43,7 @@
     "@iconify-json/material-symbols": "1.1.82",
     "@iconify-json/material-symbols-light": "1.1.22",
     "@iconify/tailwind": "1.1.1",
-    "@playwright/test": "1.41.2",
+    "@playwright/test": "1.46.1",
     "@qwikdev/astro": "0.6.1",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
