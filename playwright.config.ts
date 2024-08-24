@@ -2,6 +2,8 @@
 import { defineConfig, devices, expect } from '@playwright/test'
 import matchers from 'expect-axe-playwright'
 
+console.log(process.env.PLAYWRIGHT_TEST_BASE_URL)
+
 expect.extend(matchers)
 
 export default defineConfig({
