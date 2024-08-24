@@ -27,7 +27,9 @@
     "update:npm": "ncu --removeRange -x @totto/*",
     "update:jsr": "ncu --removeRange @totto/* -r https://npm.jsr.io/"
   },
-  "dependencies": {},
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001651"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "2.22.0",
     "@astrojs/check": "0.8.1",
