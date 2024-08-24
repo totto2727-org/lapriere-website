@@ -16,7 +16,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL,
+    // baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL,
+    baseURL: 'http://localhost:4321',
     trace: 'on-first-retry',
   },
   projects: [
@@ -49,4 +50,8 @@ export default defineConfig({
     //   use: { ...devices['iPad Mini'] },
     // },
   ],
+  webServer: {
+    command: 'nr build && nr preview',
+    url: 'http://localhost:4321',
+  },
 })
