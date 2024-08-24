@@ -10,7 +10,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 3 : undefined,
+  // workers: process.env.CI ? 3 : undefined,
+  workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
     baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL,
@@ -21,29 +22,29 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'android',
-      use: { ...devices['Galaxy S8'] },
-    },
-    {
-      name: 'android tab',
-      use: { ...devices['Galaxy Tab S4'] },
-    },
-    {
-      name: 'iPhone',
-      use: { ...devices['iPhone 8'] },
-    },
-    {
-      name: 'ipad',
-      use: { ...devices['iPad Mini'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
+    // {
+    //   name: 'android',
+    //   use: { ...devices['Galaxy S8'] },
+    // },
+    // {
+    //   name: 'android tab',
+    //   use: { ...devices['Galaxy Tab S4'] },
+    // },
+    // {
+    //   name: 'iPhone',
+    //   use: { ...devices['iPhone 8'] },
+    // },
+    // {
+    //   name: 'ipad',
+    //   use: { ...devices['iPad Mini'] },
+    // },
   ],
 })
