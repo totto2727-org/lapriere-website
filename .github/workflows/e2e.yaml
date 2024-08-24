@@ -49,6 +49,7 @@ jobs:
       - uses: ./.github/actions/setup-playwright
 
       - name: Run Playwright
+        shell: bash
         continue-on-error: true
         run: npx playwright test -u
         env:
