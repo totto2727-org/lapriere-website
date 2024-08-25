@@ -8,4 +8,4 @@ runs:
       run: npm i -g @antfu/ni
     - name: Packages Install
       shell: bash
-      run: ni i
+      run: ni
