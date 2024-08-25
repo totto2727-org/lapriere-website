@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  astro-integration-kit: 0.3.1
+
 importers:
 
   .:
@@ -2010,8 +2013,8 @@ packages:
     resolution: {integrity: sha512-8hJaCuqxObShWl2wEsnASqh/DbQ2O+S66m0Q3ctJlzBPEQ4pfGwwama3FCjZO3GDLQsjvn1T0v93Vxyu/+5fGw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro-integration-kit@0.2.1:
-    resolution: {integrity: sha512-AWgFRvo3YSpFxVfDdhHRAkOR7KmNYrS7h4JCpOBgMtea6SrpARsmfZXXgFHF+nNFJxmIA//PYetkbB/HQGzutw==}
+  astro-integration-kit@0.3.1:
+    resolution: {integrity: sha512-xM3SpeMerq0aQdgV9QyDBwGm/IptgRDbdOSlmoP3ErXLD4sPeb82itfNuatXFbsudjxqcrhsPGqbapvksPG7Bw==}
     peerDependencies:
       astro: ^4.0.0
 
@@ -7215,7 +7218,7 @@ snapshots:
   '@qwikdev/astro@0.6.1(@builder.io/qwik@1.7.1(@types/node@22.5.0)(sass@1.77.4)(undici@6.19.8))(astro@4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5))(typescript@5.4.5)(vite@5.3.3(@types/node@22.5.0)(sass@1.77.4))':
     dependencies:
       '@builder.io/qwik': 1.7.1(@types/node@22.5.0)(sass@1.77.4)(undici@6.19.8)
-      astro-integration-kit: 0.2.1(astro@4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5))
+      astro-integration-kit: 0.3.1(astro@4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5))
       fs-extra: 11.2.0
       fs-move: 6.0.0
       typescript: 5.4.5
@@ -8047,7 +8050,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro-integration-kit@0.2.1(astro@4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5)):
+  astro-integration-kit@0.3.1(astro@4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5)):
     dependencies:
       astro: 4.11.5(@types/node@22.5.0)(sass@1.77.4)(typescript@5.4.5)
       pathe: 1.1.2
