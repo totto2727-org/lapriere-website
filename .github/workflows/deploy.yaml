@@ -39,6 +39,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         id: deploy
         with:
+          packageManager: pnpm
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=lapriere-website
