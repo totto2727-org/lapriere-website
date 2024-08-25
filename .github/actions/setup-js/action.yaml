@@ -4,6 +4,9 @@ description: setup js
 runs:
   using: composite
   steps:
+    - name: Corepack enable
+      shell: bash
+      run: corepack enable pnpm
     - name: Packages Install
       shell: bash
       run: ni
