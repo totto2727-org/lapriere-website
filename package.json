@@ -83,7 +83,7 @@
     "eslint-plugin-simple-import-sort": "12.1.0",
     "eslint-plugin-tailwindcss": "3.17.4",
     "expect-axe-playwright": "4.1.1",
-    "npm-check-updates": "16.14.20",
+    "npm-check-updates": "17.1.0",
     "reg-suit": "0.14.4",
     "stylelint": "16.7.0",
     "stylelint-config-html": "1.1.0",
