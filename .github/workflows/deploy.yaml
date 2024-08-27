@@ -29,7 +29,6 @@ jobs:
           env: web-site
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - uses: ./.github/actions/setup-mise
       - uses: ./.github/actions/setup-js
 
       - name: Build

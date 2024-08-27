@@ -4,5 +4,4 @@ description: setup playwright
 runs:
   using: composite
   steps:
-    - uses: ./.github/actions/setup-mise
     - uses: ./.github/actions/setup-js

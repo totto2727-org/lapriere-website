@@ -2,5 +2,4 @@
 experimental = true
 
 [tools]
-node = "22.1.0"
 "npm:@antfu/ni" = "0.22.4"

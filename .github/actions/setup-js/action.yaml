@@ -4,9 +4,16 @@ description: setup js
 runs:
   using: composite
   steps:
-    - name: Corepack enable
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .node-version
+        cache: pnpm
+    - name: Global Packages Install
       shell: bash
-      run: corepack enable pnpm
+      run: pnpm add -g @antfu/ni
     - name: Packages Install
       shell: bash
       run: ni
