@@ -69,6 +69,10 @@ jobs:
           image-directory-path: .snapshot
           report-file-path: playwright-report/reg-suit.html
 
+      - name: gen 404.html
+        run: |
+          echo "404" > 404.html
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         id: deploy
