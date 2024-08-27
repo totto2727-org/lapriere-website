@@ -20,6 +20,7 @@ permissions:
   actions: write
   # プルリクエストの操作の許可
   pull-requests: write
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-e2e-${{ github.ref }}
@@ -65,7 +66,6 @@ jobs:
         uses: reg-viz/reg-actions@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-          disable-branch: true
           image-directory-path: .snapshot
           report-file-path: playwright-report/reg-suit.html
 
