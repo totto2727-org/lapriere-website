@@ -71,7 +71,7 @@ jobs:
 
       - name: gen 404.html
         run: |
-          echo "404" > 404.html
+          echo "404" > playwright-report/404.html
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
