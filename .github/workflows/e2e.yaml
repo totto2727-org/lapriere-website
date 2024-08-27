@@ -65,6 +65,7 @@ jobs:
         uses: reg-viz/reg-actions@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
+          disable-branch: true
           image-directory-path: .snapshot
           report-file-path: playwright-report/reg-suit.html
 
