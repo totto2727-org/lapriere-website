@@ -50,7 +50,7 @@ jobs:
       - name: Run Playwright
         shell: bash
         continue-on-error: true
-        run: pnpm playwright test -u
+        run: na playwright test -u
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.url }}
           # Firefoxの問題を解決するための設定
