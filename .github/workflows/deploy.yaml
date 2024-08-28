@@ -107,7 +107,7 @@ jobs:
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           image-directory-path: .snapshot
-          report-file-path: playwright-report/reg-suit.html
+          # report-file-path: playwright-report/reg-suit.html
 
       - name: gen 404.html
         run: |
