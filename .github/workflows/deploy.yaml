@@ -59,14 +59,76 @@ jobs:
 
   e2e-test:
     needs: deploy
-    uses: ./.github/workflows/e2e.yaml
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/totto2727-org/playwright-ja:v1.46.1
+    env:
+      LANG: ja_JP.UTF-8
     permissions:
+      # デプロイ操作の許可
       deployments: write
+      # アクションの操作の許可
+      # # 主にArtifact
       actions: write
+      # プルリクエストの操作の許可
       pull-requests: write
       contents: write
-    secrets:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    with:
-      url: ${{ needs.deploy.outputs.deploy_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: playwright
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - uses: ./.github/actions/setup-playwright
+
+      - name: Run Playwright
+        shell: bash
+        continue-on-error: true
+        run: na playwright test -u
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.deploy.outputs.deploy_url }}
+          # Firefoxの問題を解決するための設定
+          HOME: /root
+
+      - name: Remove download attribute
+        run: |
+          sed -i 's|,download:Kv(e)||g' playwright-report/index.html
+
+      - name: Run reg-suit
+        continue-on-error: true
+        uses: reg-viz/reg-actions@v2
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          image-directory-path: .snapshot
+          report-file-path: playwright-report/reg-suit.html
+
+      - name: gen 404.html
+        run: |
+          echo "404" > playwright-report/404.html
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        id: deploy
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy playwright-report --project-name=lapriere-website-playwright
+
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v1
+        if: always()
+        with:
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: ${{ steps.deploy.outputs.deployment-url }}
+          ref: ${{ github.head_ref || github.ref_name }}
