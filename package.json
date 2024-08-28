@@ -72,12 +72,12 @@
     "wrangler": "3.59.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.22.0",
+    "@antfu/eslint-config": "2.27.3",
     "@astrojs/check": "0.8.1",
-    "@eslint/js": "9.6.0",
+    "@eslint/js": "9.9.1",
     "@playwright/test": "1.46.1",
     "astro-eslint-parser": "1.0.2",
-    "eslint": "9.6.0",
+    "eslint": "9.9.1",
     "eslint-plugin-astro": "1.2.0",
     "eslint-plugin-format": "0.1.1",
     "eslint-plugin-simple-import-sort": "12.1.0",
@@ -85,11 +85,11 @@
     "expect-axe-playwright": "4.1.1",
     "npm-check-updates": "17.1.0",
     "reg-suit": "0.14.4",
-    "stylelint": "16.7.0",
+    "stylelint": "16.8.2",
     "stylelint-config-html": "1.1.0",
     "stylelint-config-standard": "36.0.0",
     "stylelint-config-standard-scss": "13.1.0",
-    "typescript-eslint": "7.16.0"
+    "typescript-eslint": "7.18.0"
   },
   "pnpm": {
     "overrides": {
