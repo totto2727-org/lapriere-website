@@ -103,11 +103,12 @@ jobs:
 
       - name: Run reg-suit
         continue-on-error: true
-        uses: reg-viz/reg-actions@v2
+        uses: totto2727/reg-actions@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           image-directory-path: .snapshot
-          # report-file-path: playwright-report/reg-suit.html
+          report-file-path: playwright-report/reg-suit
+          disable-branch: true
 
       - name: gen 404.html
         run: |
@@ -119,7 +120,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy playwright-report --project-name=lapriere-website-playwright
+          command: pages deploy playwright-report --project-name=lapriere-website-playwright --branch ${{ github.head_ref || github.ref_name }}
 
       - name: Update deployment status
         uses: bobheadxi/deployments@v1
