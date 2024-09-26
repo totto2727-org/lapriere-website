@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/totto2727-org/playwright-ja:v1.46.1
+      image: ghcr.io/totto2727-org/playwright-ja:v1.47.2
     env:
       LANG: ja_JP.UTF-8
     steps:
