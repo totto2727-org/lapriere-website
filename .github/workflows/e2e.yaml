@@ -35,7 +35,7 @@ jobs:
     env:
       LANG: ja_JP.UTF-8
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Start deployment
         uses: bobheadxi/deployments@v1

@@ -18,7 +18,7 @@ jobs:
     permissions:
       deployments: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: start deployment
         uses: bobheadxi/deployments@v1
@@ -75,7 +75,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Start deployment
         uses: bobheadxi/deployments@v1
