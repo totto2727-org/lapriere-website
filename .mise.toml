@@ -2,4 +2,4 @@
 experimental = true
 
 [tools]
-"npm:@antfu/ni" = "0.22.4"
+"npm:@antfu/ni" = "0.23.2"
