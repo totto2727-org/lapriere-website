@@ -23,7 +23,10 @@
       }
     ]
   },
-  "exclude": [
-    "dist/"
+  "include": [
+    "*.ts",
+    "*.tsx",
+    "src/**/*",
+    ".astro/**/*.d.ts"
   ]
 }
