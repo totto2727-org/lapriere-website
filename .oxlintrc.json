@@ -1,0 +1,20 @@
+{
+  "env": { "browser": true, "node": true },
+  "jsPlugins": ["@totto2727/oxlint"],
+  "rules": {
+    "rules/no-jsx-script-tag": "error",
+    "rules/require-disable-reason": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.astro"],
+      "globals": { "Astro": "readonly" }
+    },
+    {
+      "files": ["src/env.d.ts"],
+      "rules": {
+        "typescript/triple-slash-reference": ["error", { "path": "always" }]
+      }
+    }
+  ]
+}

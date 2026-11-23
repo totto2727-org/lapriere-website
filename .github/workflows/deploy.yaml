@@ -31,6 +31,9 @@ jobs:
 
       - uses: ./.github/actions/setup-js
 
+      - name: Check Oxlint
+        run: pnpm run check:oxlint
+
       - name: Build
         run: nr build
 
